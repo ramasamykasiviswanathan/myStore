@@ -29,7 +29,10 @@ export class LoginComponent implements OnInit {
       if (!this.loginForm) {
         return;
       }
+      console.log('userName', this.loginForm.get('userName').value);
+      console.log('password', this.loginForm.get('password').value);
       console.log('data', data);
+      console.log('this.loginForm.value', this.loginForm.value);
     });
   }
 }
