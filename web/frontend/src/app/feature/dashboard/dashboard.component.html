@@ -1,0 +1,41 @@
+<mat-toolbar color="primary">
+  <!-- <mat-toolbar class="bgc-dark-blue-grey-500"> -->
+  <button mat-icon-button [matMenuTriggerFor]="menu">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <ng-container *ngFor="let rowValue of menuItems">
+      <button mat-menu-item [disabled]="rowValue == current">
+        <span>{{rowValue}}</span>
+      </button>
+    </ng-container>
+  </mat-menu>
+  <!-- This fills the remaining space of the current row -->
+  <span class="example-fill-remaining-space"></span>
+
+  <span>Right Aligned Text</span>
+</mat-toolbar>
+<h1 class="mat-display-2" layout="row" flex layout-align="start" style="padding-left: 4%">Select Shop</h1>
+<!-- <div flex layout-align="center"> -->
+<!-- <mat-grid-list cols="3" rowHeight="1:1" layout="row" layout-margin layout-padding>
+    <mat-grid-tile flex layout-align="center center">
+      <div layout="row">
+        <mat-icon>shopping_cart</mat-icon>
+      </div>
+    </mat-grid-tile>
+    <mat-grid-tile>2</mat-grid-tile>
+    <mat-grid-tile>3</mat-grid-tile>
+    <mat-grid-tile>4</mat-grid-tile>
+    <mat-grid-tile>5</mat-grid-tile>
+    <mat-grid-tile>6</mat-grid-tile>
+  </mat-grid-list> -->
+<div layout-align="space-around center" layout="row" layout-margin>
+  <mat-card flex="30%">Simple card</mat-card>
+  <mat-card flex="30%">Simple card</mat-card>
+  <mat-card flex="30%">Simple card</mat-card>
+</div>
+<div layout-align="space-around center" layout="row" layout-margin>
+  <mat-card flex="30%">Simple card</mat-card>
+  <mat-card flex="30%">Simple card</mat-card>
+  <mat-card flex="30%">Simple card</mat-card>
+</div>
