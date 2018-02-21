@@ -8,6 +8,7 @@ import { MaterialModule } from './material.module';
 import { CovalentModule } from './covalent.module';
 import { ForgotPasswordComponent } from '../../app/feature/forgot-password/forgot-password.component';
 import { OtpComponent } from '../../app/feature/otp/otp.component';
+import { ChangePasswordComponent } from '../../app/feature/change-password/change-password.component';
 
 @NgModule({
   imports: [
@@ -17,7 +18,7 @@ import { OtpComponent } from '../../app/feature/otp/otp.component';
     CommonModule,
     CovalentModule
   ],
-  declarations: [LoginComponent, DashboardComponent, MenuComponent, ForgotPasswordComponent, OtpComponent],
+  declarations: [LoginComponent, DashboardComponent, MenuComponent, ForgotPasswordComponent, OtpComponent, ChangePasswordComponent],
   exports: [
     CommonModule,
     MaterialModule,
@@ -28,7 +29,8 @@ import { OtpComponent } from '../../app/feature/otp/otp.component';
     DashboardComponent,
     MenuComponent,
     ForgotPasswordComponent,
-    OtpComponent
+    OtpComponent,
+    ChangePasswordComponent
   ]
 })
 export class SharedComponentModule {}
