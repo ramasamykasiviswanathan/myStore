@@ -1,41 +1,74 @@
-<mat-toolbar color="primary">
-  <!-- <mat-toolbar class="bgc-dark-blue-grey-500"> -->
-  <button mat-icon-button [matMenuTriggerFor]="menu">
-    <mat-icon>menu</mat-icon>
-  </button>
-  <mat-menu #menu="matMenu">
-    <ng-container *ngFor="let rowValue of menuItems">
-      <button mat-menu-item [disabled]="rowValue == current">
-        <span>{{rowValue}}</span>
-      </button>
-    </ng-container>
-  </mat-menu>
-  <!-- This fills the remaining space of the current row -->
-  <span class="example-fill-remaining-space"></span>
-
-  <span>Right Aligned Text</span>
-</mat-toolbar>
-<h1 class="mat-display-2" layout="row" flex layout-align="start" style="padding-left: 4%">Select Shop</h1>
-<!-- <div flex layout-align="center"> -->
-<!-- <mat-grid-list cols="3" rowHeight="1:1" layout="row" layout-margin layout-padding>
-    <mat-grid-tile flex layout-align="center center">
-      <div layout="row">
-        <mat-icon>shopping_cart</mat-icon>
-      </div>
-    </mat-grid-tile>
-    <mat-grid-tile>2</mat-grid-tile>
-    <mat-grid-tile>3</mat-grid-tile>
-    <mat-grid-tile>4</mat-grid-tile>
-    <mat-grid-tile>5</mat-grid-tile>
-    <mat-grid-tile>6</mat-grid-tile>
-  </mat-grid-list> -->
-<div layout-align="space-around center" layout="row" layout-margin>
-  <mat-card flex="30%">Simple card</mat-card>
-  <mat-card flex="30%">Simple card</mat-card>
-  <mat-card flex="30%">Simple card</mat-card>
-</div>
-<div layout-align="space-around center" layout="row" layout-margin>
-  <mat-card flex="30%">Simple card</mat-card>
-  <mat-card flex="30%">Simple card</mat-card>
-  <mat-card flex="30%">Simple card</mat-card>
+<div fxLayoutAlign="space-between">
+  <div fxFlex="90" fxFlexOffset="5">
+    <mat-grid-list gutterSize="10px" rowHeight="1:1" cols="3">
+      <mat-grid-tile>
+        <div fxLayout="column">
+          <div fxLayout="column">
+            <!-- <td-notification-count fxFlex color="primary" [notifications]="1" fxFlexAlign="end" fxFlexOffset="-2">
+            </td-notification-count> -->
+            <mat-icon fxFlex fxFlexAlign="center" fxFlex fxFlexAlign="end" fxFlexOffset="-2">close</mat-icon>
+            <mat-icon fxFlex fxFlexAlign="center">shopping_cart</mat-icon>
+          </div>
+          <div fxFlexAlign="center" fxFlexOffset="10" fxFlex="90" fxLayout="row" fxLayoutAlign="space-around">
+            <span fxFlexAlign="center" fxFlexOffset="20">MUTHU PHARMACY</span>
+          </div>
+        </div>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <div fxLayout="column">
+          <mat-icon fxflex="grow">add</mat-icon>
+        </div>
+      </mat-grid-tile>
+      <!-- <mat-grid-tile fxflex>
+        <div fxLayout="column">
+          <mat-icon fxFlex="100" fxFlexAlign="center">shopping_cart</mat-icon>
+          <div fxFlexAlign="center" fxFlexOffset="10" fxFlex="90" fxLayout="row" fxLayoutAlign="space-around">
+            <span fxFlexAlign="center" fxFlexOffset="20">MUTHU PHARMACY</span>
+          </div>
+        </div>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <div fxLayout="column" fxLayoutAlign="none none">
+          <mat-icon fxFlex="100" fxFlexAlign="center">shopping_cart</mat-icon>
+          <div fxFlexAlign="center" fxFlexOffset="10" fxFlex>
+            PONDY MEDICALS
+          </div>
+        </div>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <div fxLayout="column">
+          <div fxLayout="row" fxLayoutAlign="center center" style="height:100%">
+            <mat-icon fxFlexAlign="center">shopping_cart</mat-icon>
+            <td-notification-count color="primary" [notifications]="1" fxFlexAlign="start" fxFlexOffset="10">
+            </td-notification-count>
+          </div>
+          <div fxFlexAlign="center" fxFlexOffset="10" fxFlex="90" fxLayout="row" fxLayoutAlign="space-around">
+            <span fxFlexAlign="center" fxFlexOffset="20">APOLLO PHARMACY</span>
+          </div>
+        </div>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <div fxLayout="column">
+          <div fxLayout="column">
+            <td-notification-count fxFlex color="primary" [notifications]="1" fxFlexAlign="end" fxFlexOffset="-2">
+            </td-notification-count>
+            <mat-icon fxFlex fxFlexAlign="center">shopping_cart</mat-icon>
+          </div>
+          <div fxFlexAlign="center" fxFlexOffset="10" fxFlex="90" fxLayout="row" fxLayoutAlign="space-around">
+            <span fxFlexAlign="center" fxFlexOffset="20">MUTHU PHARMACY</span>
+          </div>
+        </div>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-grid-tile-header>header</mat-grid-tile-header>
+        <mat-card fxFlex fxFlexAlign="center"></mat-card>
+        <mat-grid-tile-footer>footer</mat-grid-tile-footer>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-grid-tile-header>header</mat-grid-tile-header>
+        <mat-card fxFlex fxFlexAlign="center"></mat-card>
+        <mat-grid-tile-footer>footer</mat-grid-tile-footer>
+      </mat-grid-tile> -->
+    </mat-grid-list>
+  </div>
 </div>
