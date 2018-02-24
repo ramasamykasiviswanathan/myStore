@@ -6,6 +6,9 @@ import { DashboardComponent } from '../../app/feature/dashboard/dashboard.compon
 import { MenuComponent } from '../../app/feature/menu/menu.component';
 import { MaterialModule } from './material.module';
 import { CovalentModule } from './covalent.module';
+import { ForgotPasswordComponent } from '../../app/feature/forgot-password/forgot-password.component';
+import { OtpComponent } from '../../app/feature/otp/otp.component';
+import { ChangePasswordComponent } from '../../app/feature/change-password/change-password.component';
 
 @NgModule({
   imports: [
@@ -15,7 +18,7 @@ import { CovalentModule } from './covalent.module';
     CommonModule,
     CovalentModule
   ],
-  declarations: [LoginComponent, DashboardComponent, MenuComponent],
+  declarations: [LoginComponent, DashboardComponent, MenuComponent, ForgotPasswordComponent, OtpComponent, ChangePasswordComponent],
   exports: [
     CommonModule,
     MaterialModule,
@@ -24,7 +27,10 @@ import { CovalentModule } from './covalent.module';
     ReactiveFormsModule,
     LoginComponent,
     DashboardComponent,
-    MenuComponent
+    MenuComponent,
+    ForgotPasswordComponent,
+    OtpComponent,
+    ChangePasswordComponent
   ]
 })
 export class SharedComponentModule {}
