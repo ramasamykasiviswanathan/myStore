@@ -1,0 +1,46 @@
+<div class="page">
+  <div class="content">
+    <div fxLayout="column" fxLayoutAlign="space-around center">
+      <div fxLayout="row" fxLayoutAlign="center center">
+        <h1>Sign Up</h1>
+      </div>
+      <form [formGroup]="signUpForm" novalidate>
+        <div fxLayout="column" style = "margin-left: 20px; margin-right:20px" fxLayoutAlign="space-between stretch">
+          <div>
+            <mat-form-field fxLayout="column" fxLayoutAlign="center stretch">
+              <input matInput placeholder="Name" formControlName="userName">
+            </mat-form-field>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="space-between center">
+            <mat-form-field fxFlex="20%" fxFlexAlign="start">
+              <mat-select required>
+                <mat-option>--</mat-option>
+                <mat-option *ngFor="let countryCode of countryCodes" [value]="countryCode">
+                  {{countryCode.code}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field fxFlex="70%" fxFlexAlign="end">
+              <input matInput placeholder="Mobile Number" formControlName="mobileNumber">
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field fxLayout="column" fxLayoutAlign="center stretch">
+              <input matInput placeholder="Email" formControlName="email">
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field fxLayout="column" fxLayoutAlign="center stretch">
+              <input matInput placeholder="Password" [type]="hide ? 'password' : 'text'" formControlName="password">
+              <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+            </mat-form-field>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div fxLayout="column" fxLayoutAlign="space-around stretch">
+      <button mat-raised-button color="primary" [disabled]='signUpForm.invalid'>Send OTP</button>
+    </div>
+  </div>
+</div>
