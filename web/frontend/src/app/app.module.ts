@@ -7,10 +7,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { OverlayContainer } from '@angular/cdk/overlay';
 import { HttpClientModule } from '@angular/common/http';
 import { SignUpComponent } from './feature/sign-up/sign-up.component';
+import { NewShopComponent } from './feature/new-shop/new-shop.component';
 
 
 @NgModule({
-  declarations: [AppComponent, SignUpComponent],
+  declarations: [AppComponent, SignUpComponent, NewShopComponent],
   imports: [
     BrowserAnimationsModule,
     BrowserModule,
