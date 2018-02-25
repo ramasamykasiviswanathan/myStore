@@ -1,3 +1,17 @@
-<p>
-  menu works!
-</p>
+<mat-toolbar color="primary">
+  <!-- <mat-toolbar class="bgc-dark-blue-grey-500"> -->
+  <button mat-icon-button [matMenuTriggerFor]="menu">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <ng-container *ngFor="let rowValue of menuItems">
+      <button mat-menu-item [disabled]="rowValue == current">
+        <span>{{rowValue}}</span>
+      </button>
+    </ng-container>
+  </mat-menu>
+  <!-- This fills the remaining space of the current row -->
+  <span class="example-fill-remaining-space"></span>
+  <span>Right Aligned Text</span>
+</mat-toolbar>
+<h1 class="mat-display-2" layout="row" flex layout-align="start" style="padding-left: 4%">Select Shop</h1>
