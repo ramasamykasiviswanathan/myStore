@@ -1,0 +1,27 @@
+<div fxLayout="column" fxLayoutAlign="space-around center" fxLayoutGap="25px">
+    <div fxLayout="row">Enter OTP</div>
+    <div fxLayout="column">
+        <div>Please enter 4 - Digit conﬁrmation code</div>
+        <div fxLayoutAlign="center">you recieved</div>
+    </div>
+    <form [formGroup]="otp" novalidate>
+        <div fxLayout = "row" fxLayoutAlign="center" fxLayoutGap="10px">
+            <mat-form-field fxFlex="5%">
+                <input matInput type="text" formControlName = "firstDigit">
+            </mat-form-field>
+            <mat-form-field fxFlex="5%">
+                <input matInput type="text" formControlName = "secondDigit">
+            </mat-form-field>
+            <mat-form-field fxFlex="5%">
+                <input matInput type="text" formControlName = "thirdDigit">
+            </mat-form-field>
+            <mat-form-field fxFlex="5%">
+                <input matInput type="text" formControlName = "fourthDigit">
+            </mat-form-field>
+        </div>
+    </form>
+    <button mat-raised-button color="primary" [disabled]='otp.invalid'>Login</button>
+    <span>
+        <a routerLink=".">Resend OTP</a>
+    </span>
+</div>
