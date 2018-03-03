@@ -1,0 +1,49 @@
+<div class="container" fxLayout="column">
+  <app-menu name="Muthu Pharma"></app-menu>
+  <div fxLayout="column" fxFlex="1">
+    <form [formGroup]="pharmaHomeForm" novalidate>
+      <div style="border: 1px solid; background: #ffa333;">
+        <div fxLayout="column" style="padding-bottom: 5px; padding-top: 5px; margin-left: 20px; margin-right:20px" fxLayoutAlign="end stretch">
+          <input placeholder="  Enter the name of the product you are looking for" style="line-height: 2.5em;" type="text">
+        </div>
+      </div>
+    </form>
+  </div>
+  <footer style="padding-bottom: 20px; margin-left: 20px; margin-right:20px;">
+    <mat-grid-list gutterSize="10px" rowHeight="1:1" cols="3">
+      <mat-grid-tile>
+        <div fxLayout="column">
+          <div fxLayout="column">
+            <mat-icon fxFlex fxFlexAlign="center" style="font-size:50px;">camera</mat-icon>
+          </div>
+          <div fxFlexAlign="center" fxFlexOffset="10" fxFlex="90" fxLayout="column" fxLayoutAlign="space-around">
+            <div fxFlexAlign="center">Upload</div>
+            <div fxFlexAlign="center">Pescrition</div>
+          </div>
+        </div>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <div fxLayout="column">
+          <div fxLayout="column">
+            <mat-icon fxFlex fxFlexAlign="center" style="font-size:50px;">phone_in_talk</mat-icon>
+          </div>
+          <div fxFlexAlign="center" fxFlexOffset="10" fxFlex="90" fxLayout="column" fxLayoutAlign="space-around">
+            <div fxFlexAlign="center">Upload and</div>
+            <div fxFlexAlign="center">speak</div>
+          </div>
+        </div>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <div fxLayout="column">
+          <div fxLayout="column">
+            <mat-icon fxFlex fxFlexAlign="center" style="font-size:50px;">search</mat-icon>
+          </div>
+          <div fxFlexAlign="center" fxFlexOffset="10" fxFlex="90" fxLayout="column" fxLayoutAlign="space-around">
+            <div fxFlexAlign="center">Manual</div>
+            <div fxFlexAlign="center">Order</div>
+          </div>
+        </div>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </footer>
+</div>

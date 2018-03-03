@@ -8,10 +8,13 @@ import { OverlayContainer } from '@angular/cdk/overlay';
 import { HttpClientModule } from '@angular/common/http';
 import { SignUpComponent } from './feature/sign-up/sign-up.component';
 import { NewShopComponent } from './feature/new-shop/new-shop.component';
+import { PharmaProductComponent } from './feature/pharma-product/pharma-product.component';
+import { ProductComponent } from './feature/product/product.component';
+import { PharmaHomeComponent } from './feature/pharma-home/pharma-home.component';
 
 
 @NgModule({
-  declarations: [AppComponent, SignUpComponent, NewShopComponent],
+  declarations: [AppComponent, SignUpComponent, NewShopComponent, PharmaProductComponent, ProductComponent, PharmaHomeComponent],
   imports: [
     BrowserAnimationsModule,
     BrowserModule,
