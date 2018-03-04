@@ -1,0 +1,16 @@
+.container {
+    min-height: 100%;
+    }
+
+    a:hover, a:visited, a:link, a:active
+    {
+        text-decoration: none;
+    }
+
+.mat-expansion-panel-body {
+        padding: 0;
+    }
+
+    ::ng-deep .parametersPanel .mat-expansion-panel-body {
+        padding: 0;
+    }
