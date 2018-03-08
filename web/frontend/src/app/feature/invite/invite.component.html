@@ -1,0 +1,28 @@
+<div class="container" fxLayout="column">
+  <app-menu name="DoorDelivr"></app-menu>
+  <div fxLayout="column" fxFlex="1">
+    <div style="padding-top:40px; margin-left: 20px; margin-right:20px; font-size:14px">
+      Invite a friend to use the DoorDelivr App
+    </div>
+    <form [formGroup]="inviteForm" novalidate>
+      <div fxLayout="column" fxLayoutAlign="space-around stretch">
+        <mat-form-field style="padding-top:20px; margin-left: 20px; margin-right:20px">
+          <input matInput placeholder="Friends Phone number or Emailid" formControlName="inviteInput" type="text">
+        </mat-form-field>
+      </div>
+      <div style="padding-top:20px; margin-left: 20px; margin-right:20px; font-size:17px">
+        Recommended Retailers
+      </div>
+      <div style="margin-left: 20px; padding-top: 20px">
+        <ng-container *ngFor="let retailer of retailerList">
+          <div>
+            <mat-checkbox>{{retailer.name}}</mat-checkbox>
+          </div>
+        </ng-container>
+      </div>
+    </form>
+  </div>
+</div>
+<div fxLayout="column" style="padding-top:20px; margin-left: 20px; margin-right:20px; font-size:17px" fxLayoutAlign="space-around stretch">
+  <button mat-raised-button style="background: lightblue;">Invite</button>
+</div>

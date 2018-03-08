@@ -1,0 +1,88 @@
+<div class="container" fxLayout="column">
+  <app-menu name="Nilgiris Kotturupuram"></app-menu>
+  <div fxLayout="column" fxFlex="1">
+    <mat-tab-group mat-stretch-tabs>
+      <mat-tab label="Tab 1">
+        <form [formGroup]="superMarketHomeForm" novalidate>
+          <div fxLayout="column" style="padding-bottom: 5px; padding-top: 5px; margin-left: 20px; margin-right:20px" fxLayoutAlign="end stretch">
+            <input placeholder="  Enter product category or sub-category" style="border: 1px solid; line-height: 2.5em;" type="text">
+          </div>
+          <div style="padding-right: 5px; padding-left: 5px">
+            <mat-accordion>
+              <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    <mat-icon style="font-size:20px; padding-top: 18px; padding-right: 10px;">folder</mat-icon>
+                    <h4 matLine> Personal data</h4>
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+                    <mat-list fxLayout="column">
+                        <mat-list-item fxFlex="grow">
+                          <mat-icon matListIcon style="padding-left: 10px; padding-top: 10px">play_arrow</mat-icon>
+                          <button mat-button fxFlex="grow">
+                                <div fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="15px">
+                                    <p matLine style="line-height: 2.5em;"> Xyz </p>
+                                  </div>
+                            </button>
+                        </mat-list-item>
+                        
+                        
+                        <mat-list-item fxFlex="grow">
+                          <mat-icon matListIcon style="padding-left: 10px; padding-top: 10px">play_arrow</mat-icon>
+                          <button mat-button fxFlex="grow">
+                            <div fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="15px">
+                              <p matLine style="line-height: 2.5em;"> Xyz </p>
+                            </div>
+                          </button>
+                        </mat-list-item>
+                      </mat-list>
+              </mat-expansion-panel>
+              <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    <mat-icon style="font-size:20px; padding-top: 18px; padding-right: 10px;">folder</mat-icon>
+                    <h4 matLine> Personal data</h4>
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+                <mat-list fxLayout="column">
+                  <mat-list-item fxFlex="grow">
+                    <mat-icon matListIcon style="padding-left: 10px; padding-top: 10px">play_arrow</mat-icon>
+                    <button mat-button fxFlex="grow">
+                            <div fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="15px">
+                                <p matLine style="line-height: 2.5em;"> Xyz </p>
+                              </div>
+                        </button>
+                  </mat-list-item>
+
+                  <mat-list-item fxFlex="grow">
+                    <mat-icon matListIcon style="padding-left: 10px; padding-top: 10px">play_arrow</mat-icon>
+                    <button mat-button fxFlex="grow">
+                              <div fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="15px">
+                                  <p matLine style="line-height: 2.5em;"> Xyz </p>
+                                </div>
+                          </button>
+                  </mat-list-item>
+                </mat-list>
+              </mat-expansion-panel>
+            </mat-accordion>
+          </div>
+        </form>
+      </mat-tab>
+      <mat-tab label="Tab 2">
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            This is the expansion title
+          </mat-expansion-panel-header>
+
+          <p>This is the primary content of the panel.</p>
+
+          <mat-action-row>
+            <button mat-button>Click me</button>
+          </mat-action-row>
+        </mat-expansion-panel>
+      </mat-tab>
+    </mat-tab-group>
+
+
+  </div>
+</div>

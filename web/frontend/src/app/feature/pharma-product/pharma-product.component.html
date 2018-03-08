@@ -1,0 +1,16 @@
+<div class="container" fxLayout="column">
+  <app-menu name="Muthu Pharma"></app-menu>
+  <div fxLayout="column" fxFlex="1">
+    <form [formGroup]="pharmaProductForm" novalidate>
+      <div style="border: 1px solid; background: #ffa333;">
+      <div fxLayout="column" style="padding-bottom: 5px; padding-top: 5px; margin-left: 20px; margin-right:20px" fxLayoutAlign="end stretch">
+        <input placeholder="  Enter the name of the product you are looking for" style="line-height: 2.5em;" type="text">
+      </div>
+      </div>
+      <app-product></app-product>
+    </form>
+  </div>
+  <div fxLayout="column" style="padding-bottom:15px; margin-left: 20px; margin-right:20px"fxLayoutAlign="space-around stretch">
+      <button mat-raised-button style="background: lightblue;">Add to cart</button>
+    </div>
+</div>
