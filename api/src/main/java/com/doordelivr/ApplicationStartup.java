@@ -42,13 +42,11 @@ public class ApplicationStartup implements ApplicationListener<ApplicationReadyE
 			String string = xmlobjectMapper.writeValueAsString(populateObject());
 			string = xmlobjectMapper.writeValueAsString( populateFetchCategory());
 			System.out.println(string);
-			productList = (List<Product>) products.Products(string).parallelStream().filter(Objects::nonNull).map(this.myFunction).collect(Collectors.toList());
+			productList = (List<Product>) products.getProducts(0, string).parallelStream().filter(Objects::nonNull).map(this.myFunction).collect(Collectors.toList());
 			productList.forEach(System.out::println);
 		} catch (JsonProcessingException e) {
 			e.printStackTrace();
 		}
-		productList = (List<Product>) products.Products(0).parallelStream().filter(Objects::nonNull).map(this.myFunction).collect(Collectors.toList());
-		productList.forEach(System.out::println);
 		
 		symbols.findAllByOrderByNameAsc();
 		SymbolEntity symbolEntity = new SymbolEntity();
