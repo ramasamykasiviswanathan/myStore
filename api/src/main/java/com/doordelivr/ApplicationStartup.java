@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,9 +14,10 @@ import org.springframework.stereotype.Component;
 
 import com.doordelivr.mssql.dao.crudrepository.ProductRepository;
 import com.doordelivr.mssql.dao.model.Product;
-import com.doordelivr.mssql.dao.xml.model.InputParam;
-import com.doordelivr.mssql.dao.xml.model.OrderDetails;
-import com.doordelivr.mssql.dao.xml.model.SaveOrder;
+import com.doordelivr.mssql.dao.xml.model.fetchcategory.Parameters;
+import com.doordelivr.mssql.dao.xml.model.saveorder.InputParam;
+import com.doordelivr.mssql.dao.xml.model.saveorder.OrderDetails;
+import com.doordelivr.mssql.dao.xml.model.saveorder.SaveOrder;
 import com.doordelivr.mysql.dao.crudrepository.SymbolEntityRepository;
 import com.doordelivr.mysql.dao.model.SymbolEntity;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -35,20 +37,20 @@ public class ApplicationStartup implements ApplicationListener<ApplicationReadyE
 
 	@Override
 	public void onApplicationEvent(ApplicationReadyEvent event) {
+		List<Product> productList = null;
 		try {
 			String string = xmlobjectMapper.writeValueAsString(populateObject());
+			string = xmlobjectMapper.writeValueAsString( populateFetchCategory());
 			System.out.println(string);
+			productList = (List<Product>) products.Products(string).parallelStream().filter(Objects::nonNull).map(this.myFunction).collect(Collectors.toList());
+			productList.forEach(System.out::println);
 		} catch (JsonProcessingException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		List<? super Object> list = products.Products(0);
-		List<Product> products = (List<Product>) list.parallelStream().filter(Objects::nonNull).map( v ->{
-			Object[] value = (Object[])v;
-			return new Product((Integer)value[0], ((String) value[1]).trim(), (Double)value[2], (Double)value[3]);
-		}).collect(Collectors.toList());
-		products.forEach(System.out::println);
-		List value = symbols.findAllByOrderByNameAsc();
+		productList = (List<Product>) products.Products(0).parallelStream().filter(Objects::nonNull).map(this.myFunction).collect(Collectors.toList());
+		productList.forEach(System.out::println);
+		
+		symbols.findAllByOrderByNameAsc();
 		SymbolEntity symbolEntity = new SymbolEntity();
 		symbolEntity.setIndustry("industry");
 		symbolEntity.setMarketCap(new BigDecimal("100"));
@@ -56,6 +58,21 @@ public class ApplicationStartup implements ApplicationListener<ApplicationReadyE
 		symbolEntity.setSector("sector");
 		symbolEntity.setSymbol("symbol");
 		symbols.save(symbolEntity);
+	}
+	
+	Function<Object, Product> myFunction = (input) ->{
+		Object[] value = (Object[])input;
+		return new Product((Integer)value[0], ((String) value[1]).trim(), (Double)value[2], (Double)value[3]);
+	};
+	
+	com.doordelivr.mssql.dao.xml.model.fetchcategory.InputParam populateFetchCategory(){
+			com.doordelivr.mssql.dao.xml.model.fetchcategory.InputParam inputParam = new com.doordelivr.mssql.dao.xml.model.fetchcategory.InputParam();
+			inputParam.setAppID("1");
+			inputParam.setSpType("FetchProducts");
+			inputParam.setRetailerID("1");
+			inputParam.setParameters(new Parameters());
+			inputParam.getParameters().setSearchProducts("Milk");
+			return inputParam;
 	}
 	
 	InputParam populateObject(){

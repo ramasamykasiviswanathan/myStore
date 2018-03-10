@@ -1,4 +1,4 @@
-package com.doordelivr.mssql.dao.xml.model;
+package com.doordelivr.mssql.dao.xml.model.saveorder;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 public class OrderDetails {
