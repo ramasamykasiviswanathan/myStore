@@ -8,14 +8,152 @@ $typography: mat-typography-config(
   $headline: mat-typography-level(32px, 48px, 700)
 );
 
-@include mat-core($typography); // $typography is an **optional** argument for the mat-core
+/*@include mat-core($typography); // $typography is an **optional** argument for the mat-core
 
-$primary: mat-palette($mat-orange, 800, 100, 900);
+$primary: mat-palette($mat-blue-grey, 800, 100, 900);
 $accent: mat-palette($mat-light-blue, 600, 100, 900);
 
 $warn: mat-palette($mat-red, 600, 100, 900);
 
-$theme: mat-light-theme($primary, $accent, $warn);
+$theme: mat-dark-theme($primary, $accent, $warn);
 
 @include angular-material-theme($theme);
 @include covalent-theme($theme, $typography); // $typography is an **optional** argument for the covalent-theme
+ */
+
+@include mat-core($typography);
+$my-dark-theme-background: (
+  status-bar: map_get($mat-blue-grey, 500),
+  app-bar: map_get($mat-blue-grey, 500),
+  background: map_get($mat-blue-grey, 500),
+  hover: rgba(white, 0.04),
+  card: map_get($mat-blue-grey, 500),
+  dialog: map_get($mat-blue-grey, 500),
+  disabled-button: $white-12-opacity,
+  raised-button: map-get($mat-grey, 800),
+  focused-button: $white-6-opacity,
+  selected-button: map_get($mat-grey, 900),
+  selected-disabled-button: map_get($mat-grey, 800),
+  disabled-button-toggle: black,
+  unselected-chip: map_get($mat-grey, 700),
+  disabled-list-option: black
+);
+
+$my-dark-theme-foreground: (
+  base: white,
+  divider: $white-12-opacity,
+  dividers: $white-12-opacity,
+  disabled: rgba(white, 0.3),
+  disabled-button: rgba(white, 0.3),
+  disabled-text: rgba(white, 0.3),
+  hint-text: rgba(white, 0.3),
+  secondary-text: rgba(white, 0.7),
+  icon: white,
+  icons: white,
+  text: white,
+  slider-min: white,
+  slider-off: rgba(white, 0.3),
+  slider-off-active: rgba(white, 0.3)
+);
+
+@function create-wonky-theme($primary, $accent, $warn: mat-palette($mat-red)) {
+  @return (
+    primary: $primary,
+    accent: $accent,
+    warn: $warn,
+    is-dark: false,
+    foreground: $my-dark-theme-foreground,
+    background: $my-dark-theme-background
+  );
+}
+$custom-theme-primary: mat-palette($mat-blue-grey, 500);
+$custom-theme-accent: mat-palette($mat-orange, 600);
+$custom-theme-warn: mat-palette($mat-red);
+$custom-theme: create-wonky-theme(
+  $custom-theme-primary,
+  $custom-theme-accent,
+  $custom-theme-warn
+);
+
+$light-focused: rgba(white, 0.12);
+$light-dividers: rgba(white, 0.12);
+$light-disabled-text: rgba(white, 0.5);
+$light-secondary-text: rgba(white, 0.7);
+
+// $delivr-background-color: $mat-grey;
+$delivr-background-color: $mat-blue-grey;
+// $delivr-background: black;
+$delivr-background: map_get($delivr-background-color, 500);
+// $delivr-background-material: #303030;
+$delivr-background-material: $delivr-background;
+
+/* $delivr-dark-theme-background: (
+  status-bar: $delivr-background,
+  app-bar: map_get($delivr-background-color, 900),
+  background: $delivr-background-material,
+  hover: rgba(white, 0.04),
+  card: map_get($delivr-background-color, 800),
+  dialog: map_get($delivr-background-color, 800),
+  disabled-button: rgba(white, 0.12),
+  raised-button: map-get($delivr-background-color, 800),
+  focused-button: $light-focused,
+  selected-button: map_get($delivr-background-color, 900),
+  selected-disabled-button: map_get($delivr-background-color, 800),
+  disabled-button-toggle: $delivr-background,
+  unselected-chip: map_get($delivr-background-color, 700),
+  disabled-list-option: $delivr-background
+); */
+
+$delivr-theme-background: (
+  status-bar: map_get($mat-blue-grey, 500),
+  app-bar: map_get($mat-blue-grey, 500),
+  background: map_get($mat-blue-grey, 500),
+  hover: rgba(white, 0.04),
+  card: map_get($mat-blue-grey, 500),
+  dialog: map_get($mat-blue-grey, 500),
+  disabled-button: $white-12-opacity,
+  raised-button: map-get($mat-grey, 800),
+  focused-button: $white-6-opacity,
+  selected-button: map_get($mat-grey, 900),
+  selected-disabled-button: map_get($mat-grey, 800),
+  disabled-button-toggle: black,
+  unselected-chip: map_get($mat-grey, 700),
+  disabled-list-option: black
+);
+
+$delivr-dark-theme-foreground: (
+  base: white,
+  divider: $light-dividers,
+  dividers: $light-dividers,
+  disabled: $light-disabled-text,
+  disabled-button: rgba(white, 0.3),
+  disabled-text: $light-disabled-text,
+  hint-text: $light-disabled-text,
+  secondary-text: $light-secondary-text,
+  icon: white,
+  icons: white,
+  text: white,
+  slider-min: white,
+  slider-off: rgba(white, 0.3),
+  slider-off-active: rgba(white, 0.3)
+);
+
+$delivr-primary: mat-palette($mat-blue-grey, 800, 100, 900);
+$delivr-accent: mat-palette($mat-light-blue, 600, 100, 900);
+
+$delivr-warn: mat-palette($mat-red, 600, 100, 900);
+
+@function delivr-dark-theme($primary, $accent, $warn: mat-palette($mat-red)) {
+  @return (
+    primary: $primary,
+    accent: $accent,
+    warn: $warn,
+    is-dark: true,
+    foreground: $mat-dark-theme-foreground,
+    background: $mat-dark-theme-background
+  );
+}
+
+$delivr-theme: delivr-dark-theme($delivr-primary, $delivr-accent, $delivr-warn);
+@include angular-material-theme($custom-theme);
+@include covalent-theme($custom-theme, $typography);

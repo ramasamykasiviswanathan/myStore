@@ -9,6 +9,7 @@ import org.springframework.data.repository.query.Param;
 import com.doordelivr.mssql.dao.model.Product;
 
 public interface ProductRepository extends CrudRepository<Product, Long> {
-	@Query(value = "EXECUTE Dsp_GetProducts :mode", nativeQuery = true)
-	public List<Object> Products(@Param("mode") Integer mode);
+	@Query(value = "EXECUTE Dsp_GetProducts :mode, :xml", nativeQuery = true)
+	public List<Object> getProducts(@Param("mode") Integer mode, @Param("xml") String xml);
+	
 }
