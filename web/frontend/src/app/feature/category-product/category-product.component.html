@@ -1,0 +1,32 @@
+<div class="container" fxLayout="column" fxLayoutGap="5px">
+  <div fxLayout fxLayoutAlign="start stretch">
+    <button mat-raised-button color="primary" fxLayoutAlign="start" fxLayout="row" fxFlex="100">
+      <mat-icon>arrow_back</mat-icon>
+      Milk/Dairy drinks</button>
+    <div>
+    </div>
+  </div>
+  <form novalidate fxLayoutAlign="start stretch">
+    <input type="text" fxFlexOffset="2" fxFlex="96" style="border: 1px solid; line-height: 2.5em">
+  </form>
+  <mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          2% Fat Milk
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div fxFlex="20">
+        <app-quantity-editor></app-quantity-editor>
+      </div>
+    </mat-expansion-panel>
+    <mat-divider></mat-divider>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Low Fat Milk
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>
