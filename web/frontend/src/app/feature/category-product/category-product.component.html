@@ -1,0 +1,24 @@
+<div class="container" fxLayout="column" fxLayoutGap="5px">
+  <div fxLayout fxLayoutAlign="start stretch">
+    <button mat-raised-button color="primary" fxLayoutAlign="start" fxLayout="row" fxFlex="100">
+      <mat-icon>arrow_back</mat-icon>
+      Milk/Dairy drinks</button>
+    <div>
+    </div>
+  </div>
+  <form novalidate fxLayoutAlign="start stretch">
+    <input type="text" fxFlexOffset="2" fxFlex="96" style="border: 1px solid; line-height: 2.5em" placeholder="Enter Key Word">
+  </form>
+  <mat-accordion>
+    <mat-expansion-panel *ngFor="let value of values">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{value}}
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <app-quantity-editor fxFlex="80"></app-quantity-editor>
+      <mat-icon fxFlexOffset="15" fxFlex="5">add_shopping_cart</mat-icon>
+    </mat-expansion-panel>
+    <mat-divider></mat-divider>
+  </mat-accordion>
+</div>

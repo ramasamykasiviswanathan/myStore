@@ -9,6 +9,15 @@ import { CovalentModule } from './covalent.module';
 import { ForgotPasswordComponent } from '../../app/feature/forgot-password/forgot-password.component';
 import { OtpComponent } from '../../app/feature/otp/otp.component';
 import { ChangePasswordComponent } from '../../app/feature/change-password/change-password.component';
+import { SignUpComponent } from '../../app/feature/sign-up/sign-up.component';
+import { NewShopComponent } from '../../app/feature/new-shop/new-shop.component';
+import { PharmaProductComponent } from '../../app/feature/pharma-product/pharma-product.component';
+import { ProductComponent } from '../../app/feature/product/product.component';
+import { PharmaHomeComponent } from '../../app/feature/pharma-home/pharma-home.component';
+import { SuperMarketHomeComponent } from '../../app/feature/super-market-home/super-market-home.component';
+import { InviteComponent } from '../../app/feature/invite/invite.component';
+import { CategoryProductComponent } from '../../app/feature/category-product/category-product.component';
+import { QuantityEditorComponent } from '../../app/feature/quantity-editor/quantity-editor.component';
 
 @NgModule({
   imports: [
@@ -18,7 +27,23 @@ import { ChangePasswordComponent } from '../../app/feature/change-password/chang
     CommonModule,
     CovalentModule
   ],
-  declarations: [LoginComponent, DashboardComponent, MenuComponent, ForgotPasswordComponent, OtpComponent, ChangePasswordComponent],
+  declarations: [
+    LoginComponent,
+    DashboardComponent,
+    MenuComponent,
+    ForgotPasswordComponent,
+    OtpComponent,
+    ChangePasswordComponent,
+    SignUpComponent,
+    NewShopComponent,
+    PharmaProductComponent,
+    ProductComponent,
+    PharmaHomeComponent,
+    SuperMarketHomeComponent,
+    InviteComponent,
+    CategoryProductComponent,
+    QuantityEditorComponent
+  ],
   exports: [
     CommonModule,
     MaterialModule,
@@ -30,7 +55,16 @@ import { ChangePasswordComponent } from '../../app/feature/change-password/chang
     MenuComponent,
     ForgotPasswordComponent,
     OtpComponent,
-    ChangePasswordComponent
+    ChangePasswordComponent,
+    SignUpComponent,
+    NewShopComponent,
+    PharmaProductComponent,
+    ProductComponent,
+    PharmaHomeComponent,
+    SuperMarketHomeComponent,
+    InviteComponent,
+    CategoryProductComponent,
+    QuantityEditorComponent
   ]
 })
 export class SharedComponentModule {}
