@@ -1,0 +1,11 @@
+<div fxLayout="row" fxLayoutAlign="start stretch" fxLayoutGap="10px">
+  <span fxFlex="calc(5%-10px)">Qty</span>
+  <button mat-raised-button color="primary" fxFlexOffset="10%" fxFlex="calc(20%-10px)">
+    <mat-icon>remove</mat-icon>
+  </button>
+  <input fxFlex="calc(20%-10px)" type="number" style="border: 1px solid; line-height: 2.5em">
+  <button fxFlex="calc(20%-10px)" mat-raised-button color="primary">
+    <mat-icon>add</mat-icon>
+  </button>
+  <mat-icon fxFlexOffset="10%" fxFlex="calc(15%-10px)" (click)="logme($event)">delete</mat-icon>
+</div>
