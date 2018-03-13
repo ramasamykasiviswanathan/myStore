@@ -34,12 +34,17 @@ export class PlaceOrderComponent implements OnInit {
     this.selected_address = this.addressList[1].value;
     this.placeOrderForm = this.fb.group({
       patientName: [''],
+      retailerName: [''],
+      selected_address: [''],
     });
     this.placeOrderForm.valueChanges.subscribe(data => {
       if (!this.placeOrderForm) {
         return;
       }
       console.log('patientName', this.placeOrderForm.get('patientName').value);
+      console.log('retailerName', this.placeOrderForm.get('retailerName').value);
+      console.log('address', this.placeOrderForm.get('selected_address').value);
+      console.log('address', this.placeOrderForm.get('delivery_option').value);
     });
   }
 
