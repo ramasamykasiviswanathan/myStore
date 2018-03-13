@@ -13,10 +13,11 @@ import { ProductComponent } from './feature/product/product.component';
 import { PharmaHomeComponent } from './feature/pharma-home/pharma-home.component';
 import { SuperMarketHomeComponent } from './feature/super-market-home/super-market-home.component';
 import { InviteComponent } from './feature/invite/invite.component';
+import { PlaceOrderComponent } from './feature/place-order/place-order.component';
 
 
 @NgModule({
-  declarations: [AppComponent, SignUpComponent, NewShopComponent, PharmaProductComponent, ProductComponent, PharmaHomeComponent, SuperMarketHomeComponent, InviteComponent],
+  declarations: [AppComponent, SignUpComponent, NewShopComponent, PharmaProductComponent, ProductComponent, PharmaHomeComponent, SuperMarketHomeComponent, InviteComponent, PlaceOrderComponent],
   imports: [
     BrowserAnimationsModule,
     BrowserModule,

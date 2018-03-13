@@ -1,0 +1,81 @@
+<div class="container" fxLayout="column">
+  <app-menu name="Place Order"></app-menu>
+  <div fxLayout="column" fxFlex="1" style="margin-left: 20px;margin-right: 20px; padding-top: 20px">
+    <form [formGroup]="placeOrderForm" novalidate>
+      <div>Retailer : {{retailerName}}</div>
+      <hr>
+      <div>
+        <mat-form-field floatPlaceholder="never" fxFlex>
+          <input matInput type="text" placeholder="Enter Patient Name">
+        </mat-form-field>
+      </div>
+      <div class="address">
+        <div>
+          <b>Billing Address</b><br><br> {{userName}}
+          <br> {{streetName}}
+          <br> {{city}}
+          <br> {{mobileNumber}}
+          <br> {{emailID}}
+          <br>
+        </div>
+        <div style="padding-top: 10px">
+          <mat-radio-group>
+            <mat-radio-button value="1">Door Delivery</mat-radio-button>
+            <mat-radio-button value="2">Store Pickup</mat-radio-button>
+          </mat-radio-group>
+        </div>
+        <div style="padding-top: 20px">
+          <b>Select Delivery Address</b>
+        </div>
+        <div>
+          <div fxLayout="column" fxFlex="80">
+            <mat-form-field>
+              <mat-select [(value)]="selected_address">
+                <mat-option *ngFor="let address of addressList" [value]="address.value">{{address.value}} : {{address.viewValue}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="space-between center" style="padding-left:10px" fxLayoutGap="5px">
+            <div fxFlex="50">
+              <mat-icon class="mat-50" style="font-size: 30px">add_circle</mat-icon>
+            </div>
+            <div fxFlex="50">
+              <mat-icon class="mat-50" style="font-size: 30px">edit_circle</mat-icon>
+            </div>
+          </div>
+        </div>
+        <div style="padding-top: 20px">
+          <b>Delivery Date & Time</b>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="space-evenly center">
+          <div fxFlex="30">
+            <mat-form-field>
+              <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+          </div>
+          <div fxFlex="30">
+            <mat-form-field>
+                <input matInput placeholder="PM 4:50">
+                <mat-icon matSuffix>schedule</mat-icon>
+            </mat-form-field>
+          </div>
+        </div>
+            <div style="padding-top:10px"fxLayout="column">  
+              <mat-icon style="font-size: 50px; padding-left:35px">description</mat-icon>
+              <div style="font-size:10px; padding-left:5px">Upload Prescription</div>
+            </div>
+      </div>
+    </form>
+  </div>
+
+  <footer fxLayout="row" fxLayoutAlign="start stretch">
+    <div fxLayout="column" fxFlex="50" fxLayoutAlign="start stretch">
+      <button mat-raised-button style="background: lightblue;">Edit Cart</button>
+    </div>
+    <div fxLayout="column" fxFlex="50" fxLayoutAlign="start stretch">
+      <button mat-raised-button style="background: lightblue;">Confirm Order</button>
+    </div>
+  </footer>
+</div>
