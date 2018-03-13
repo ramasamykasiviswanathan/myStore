@@ -18,6 +18,7 @@ import { SuperMarketHomeComponent } from '../../app/feature/super-market-home/su
 import { InviteComponent } from '../../app/feature/invite/invite.component';
 import { CategoryProductComponent } from '../../app/feature/category-product/category-product.component';
 import { QuantityEditorComponent } from '../../app/feature/quantity-editor/quantity-editor.component';
+import { IconComponent } from '../../app/shared/icon/icon.component';
 
 @NgModule({
   imports: [
@@ -42,7 +43,8 @@ import { QuantityEditorComponent } from '../../app/feature/quantity-editor/quant
     SuperMarketHomeComponent,
     InviteComponent,
     CategoryProductComponent,
-    QuantityEditorComponent
+    QuantityEditorComponent,
+    IconComponent
   ],
   exports: [
     CommonModule,
@@ -64,7 +66,8 @@ import { QuantityEditorComponent } from '../../app/feature/quantity-editor/quant
     SuperMarketHomeComponent,
     InviteComponent,
     CategoryProductComponent,
-    QuantityEditorComponent
+    QuantityEditorComponent,
+    IconComponent
   ]
 })
 export class SharedComponentModule {}
