@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-quantity-editor',
@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./quantity-editor.component.scss']
 })
 export class QuantityEditorComponent implements OnInit {
+  @Input() showDelete: boolean = true;
   constructor() {}
 
   ngOnInit() {}
