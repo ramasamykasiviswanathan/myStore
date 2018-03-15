@@ -19,6 +19,7 @@ import { InviteComponent } from '../../app/feature/invite/invite.component';
 import { CategoryProductComponent } from '../../app/feature/category-product/category-product.component';
 import { QuantityEditorComponent } from '../../app/feature/quantity-editor/quantity-editor.component';
 import { PlaceOrderComponent } from '../../app/feature/place-order/place-order.component';
+import { IconComponent } from '../../app/shared/icon/icon.component';
 
 @NgModule({
   imports: [
@@ -44,7 +45,8 @@ import { PlaceOrderComponent } from '../../app/feature/place-order/place-order.c
     InviteComponent,
     CategoryProductComponent,
     QuantityEditorComponent,
-    PlaceOrderComponent
+    PlaceOrderComponent,
+    IconComponent
   ],
   exports: [
     CommonModule,
@@ -67,7 +69,8 @@ import { PlaceOrderComponent } from '../../app/feature/place-order/place-order.c
     InviteComponent,
     CategoryProductComponent,
     QuantityEditorComponent,
-    PlaceOrderComponent
+    PlaceOrderComponent,
+    IconComponent
   ]
 })
 export class SharedComponentModule {}
