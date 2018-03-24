@@ -7,5 +7,5 @@
   <button fxFlex="calc(20%-10px)" mat-raised-button color="primary">
     <mat-icon>add</mat-icon>
   </button>
-  <mat-icon fxFlexOffset="10%" fxFlex="calc(15%-10px)" (click)="logme($event)">delete</mat-icon>
+  <mat-icon fxFlexOffset="10%" fxFlex="calc(15%-10px)" (click)="logme($event)" *ngIf="delete">delete</mat-icon>
 </div>
