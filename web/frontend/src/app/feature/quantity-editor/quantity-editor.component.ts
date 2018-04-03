@@ -6,7 +6,7 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./quantity-editor.component.scss']
 })
 export class QuantityEditorComponent implements OnInit {
-  @Input() showDelete: boolean = true;
+  @Input() delete: Boolean = false;
   constructor() {}
 
   ngOnInit() {}
