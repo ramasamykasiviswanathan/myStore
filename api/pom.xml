@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
@@ -15,13 +16,10 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>1.5.10.RELEASE</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	<!-- <parent>
-		<groupId>com.doordelivr</groupId>
-	    <artifactId>doordelivr</artifactId>
-	    <version>0.0.1-SNAPSHOT</version>
-	</parent> -->
+	<!-- <parent> <groupId>com.doordelivr</groupId> <artifactId>doordelivr</artifactId> 
+		<version>0.0.1-SNAPSHOT</version> </parent> -->
 
 	<properties>
 		<hibernate.version>5.2.13.Final</hibernate.version>
@@ -65,9 +63,9 @@
 			<version>${ehcache.version}</version>
 		</dependency>
 		<dependency>
-    			<groupId>com.oracle</groupId>
-    			<artifactId>ojdbc6</artifactId>
-		    <version>11.2.0.4.0-atlassian-hosted</version>
+			<groupId>com.oracle</groupId>
+			<artifactId>ojdbc6</artifactId>
+			<version>11.2.0.4.0-atlassian-hosted</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.tomcat</groupId>
@@ -75,25 +73,25 @@
 			<version>${tomcatjdbc.version}</version>
 		</dependency>
 		<dependency>
-		    <groupId>mysql</groupId>
-		    <artifactId>mysql-connector-java</artifactId>
-		    <version>${mysql.jdbc.version}</version>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>${mysql.jdbc.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
-			 <version>${hibernate.version}</version>
+			<version>${hibernate.version}</version>
 		</dependency>
 		<dependency>
-		    <groupId>com.microsoft.sqlserver</groupId>
-		    <artifactId>mssql-jdbc</artifactId>
-		    <version>${mssqljdbc.version}</version>
-		    <!-- <scope>test</scope> -->
+			<groupId>com.microsoft.sqlserver</groupId>
+			<artifactId>mssql-jdbc</artifactId>
+			<version>${mssqljdbc.version}</version>
+			<!-- <scope>test</scope> -->
 		</dependency>
 		<dependency>
-    			<groupId>org.apache.commons</groupId>
-    			<artifactId>commons-lang3</artifactId>
-    			<version>${commonslang.version}</version>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>${commonslang.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>javax.validation</groupId>
@@ -101,14 +99,29 @@
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
-		    <groupId>com.fasterxml.jackson.dataformat</groupId>
-		    <artifactId>jackson-dataformat-xml</artifactId>
-		    <version>${jackson.dataformat.xml.version}</version> 
+			<groupId>com.fasterxml.jackson.dataformat</groupId>
+			<artifactId>jackson-dataformat-xml</artifactId>
+			<version>${jackson.dataformat.xml.version}</version>
 		</dependency>
 		<dependency>
-		  <groupId>org.codehaus.woodstox</groupId>
-		  <artifactId>woodstox-core-asl</artifactId>
-		  <version>4.4.1</version>
+			<groupId>org.codehaus.woodstox</groupId>
+			<artifactId>woodstox-core-asl</artifactId>
+			<version>4.4.1</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+			<version>2.9.5</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.9.5</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-annotations</artifactId>
+			<version>2.9.5</version>
 		</dependency>
 	</dependencies>
 
@@ -127,11 +140,11 @@
 			</plugin>
 		</plugins>
 	</build>
-	 <repositories>
-            <repository>
-                <id>my-repo1</id>
-                <name>your custom repo</name>
-                <url>https://maven.atlassian.com/3rdparty/</url>
-            </repository>
-        </repositories>
+	<repositories>
+		<repository>
+			<id>my-repo1</id>
+			<name>your custom repo</name>
+			<url>https://maven.atlassian.com/3rdparty/</url>
+		</repository>
+	</repositories>
 </project>

@@ -2,7 +2,6 @@ package com.doordelivr.mssql.dao.xml.model.fetchcategory;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
-import org.springframework.http.StreamingHttpOutputMessage;
 
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
