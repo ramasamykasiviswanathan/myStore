@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 import { LoginComponent } from '../../app/feature/login/login.component';
 import { DashboardComponent } from '../../app/feature/dashboard/dashboard.component';
 import { MenuComponent } from '../../app/feature/menu/menu.component';
@@ -20,6 +21,7 @@ import { CategoryProductComponent } from '../../app/feature/category-product/cat
 import { QuantityEditorComponent } from '../../app/feature/quantity-editor/quantity-editor.component';
 import { PlaceOrderComponent } from '../../app/feature/place-order/place-order.component';
 import { IconComponent } from '../../app/shared/icon/icon.component';
+import { routing } from '../../app/app.router';
 
 @NgModule({
   imports: [
@@ -27,7 +29,9 @@ import { IconComponent } from '../../app/shared/icon/icon.component';
     FormsModule,
     ReactiveFormsModule,
     CommonModule,
-    CovalentModule
+    CovalentModule,
+    RouterModule.forRoot([]),
+    routing
   ],
   declarations: [
     LoginComponent,
@@ -49,6 +53,7 @@ import { IconComponent } from '../../app/shared/icon/icon.component';
     IconComponent
   ],
   exports: [
+    RouterModule,
     CommonModule,
     MaterialModule,
     CovalentModule,
