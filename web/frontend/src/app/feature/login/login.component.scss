@@ -1,3 +1,18 @@
 mat-card {
   margin: 0px;
 }
+
+a:-webkit-any-link {
+  color: white;
+  cursor: auto;
+  text-decoration: none;
+}
+
+/deep/ .mat-input-placeholder .focused {
+  color : white;
+}
+
+.mat-form-field {
+  text-align: center;
+  font-size: medium
+}

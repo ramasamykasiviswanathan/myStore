@@ -11,25 +11,29 @@ export class LoginComponent implements OnInit {
   authenticate: Authenticate = {};
   cols: { [key: string]: string } = {
     firstCol: 'row',
-    firstColXs: 'column',
-    firstColMd: 'column',
-    firstColLg: 'column',
-    firstColGtLg: 'column',
-    secondCol: 'column'
   };
+  countryCodes = [
+    {code: '+91', country: 'India'},
+    {code: '+01', country: 'United States'},
+    {code: '+06', country: 'Australia'},
+  ];
   hide = true;
   constructor(private fb: FormBuilder) {}
 
   ngOnInit() {
     this.loginForm = this.fb.group({
       userName: ['', [Validators.required]],
-      password: ['', [Validators.required]]
+      password: ['', [Validators.required]],
+      mobileNumber: ['', [Validators.required]],
+      email: ['', [Validators.required]],
     });
     this.loginForm.valueChanges.subscribe(data => {
       if (!this.loginForm) {
         return;
       }
       console.log('userName', this.loginForm.get('userName').value);
+      console.log('mobileNumber', this.loginForm.get('mobileNumber').value);
+      console.log('email', this.loginForm.get('email').value);
       console.log('password', this.loginForm.get('password').value);
       console.log('data', data);
       console.log('this.loginForm.value', this.loginForm.value);
@@ -40,4 +44,6 @@ export class LoginComponent implements OnInit {
 export interface Authenticate {
   userName?: String;
   password?: String;
+  mobileNumber?: Number;
+  email?: String;
 }
