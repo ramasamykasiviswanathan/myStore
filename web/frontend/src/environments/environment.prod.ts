@@ -1,3 +1,8 @@
+import { environment as devenvironment } from './environment';
+
 export const environment = {
-  production: true
+  production: true,
+  URL: devenvironment.URL,
+  APPID: devenvironment.APPID,
+  path: devenvironment.path
 };

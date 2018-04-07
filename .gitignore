@@ -1,2 +1,8 @@
 .DS_Store
 **/.DS_Store
+api/.classpath
+api/.gitignore
+api/.project
+api/.settings
+web/frontend/package-lock.json
+
