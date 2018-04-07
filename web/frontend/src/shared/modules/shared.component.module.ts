@@ -23,6 +23,7 @@ import { QuantityEditorComponent } from '../../app/feature/quantity-editor/quant
 import { PlaceOrderComponent } from '../../app/feature/place-order/place-order.component';
 import { IconComponent } from '../../app/shared/icon/icon.component';
 import { routing } from '../../app/app.router';
+import { RemoteHttpService } from '../../app/shared/services/remote.service';
 
 @NgModule({
   imports: [
@@ -79,6 +80,7 @@ import { routing } from '../../app/app.router';
     QuantityEditorComponent,
     PlaceOrderComponent,
     IconComponent
-  ]
+  ],
+  providers: [RemoteHttpService]
 })
 export class SharedComponentModule {}

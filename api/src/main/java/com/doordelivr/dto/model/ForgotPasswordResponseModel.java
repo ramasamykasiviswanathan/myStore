@@ -8,8 +8,6 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import net.bytebuddy.asm.Advice.This;
-
 public class ForgotPasswordResponseModel implements Serializable
 {
     private static final long serialVersionUID = 3983174910022116692L;
