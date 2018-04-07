@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-otp',
@@ -14,7 +15,8 @@ export class OtpComponent implements OnInit {
     firstCol: 'row',
   };
   hide = true;
-  constructor(private fb: FormBuilder) {}
+  constructor( private fb: FormBuilder,
+               private router: Router) {}
 
   ngOnInit() {
     this.otp = this.fb.group({
@@ -32,6 +34,10 @@ export class OtpComponent implements OnInit {
       console.log('thirdDigit', this.otp.get('thirdDigit').value);
       console.log('fourthDigit', this.otp.get('fourthDigit').value);
     });
+  }
+
+  submitOTP() {
+    this.router.navigateByUrl('dashboard', {skipLocationChange: true});
   }
 
 }

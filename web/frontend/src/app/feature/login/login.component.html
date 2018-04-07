@@ -23,12 +23,12 @@
         </mat-form-field>
 
         <mat-form-field style="text-align: left" fxFlex="70%" fxFlexAlign="end">
-          <input matInput placeholder="   Mobile Number" formControlName="mobileNumber">
+          <input matInput oninput="this.value=this.value.slice(0,this.maxLength)" type="number" maxlength="10" placeholder="   Mobile Number" formControlName="mobileNumber">
         </mat-form-field>
       </div>
 
       <mat-form-field fxLayout="column" fxLayoutAlign="center stretch">
-        <input matInput placeholder="Email" formControlName="email">
+        <input matInput placeholder="Email" formControlName="email" email>
       </mat-form-field>
 
       <mat-form-field fxLayout="column" fxLayoutAlign="center stretch">
@@ -36,16 +36,16 @@
         <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
       </mat-form-field>
 
-      <div fxLayout="column" fxLayoutAlign="space-between stretch">
-        <button mat-raised-button color="primary" [disabled]='loginForm.invalid' flex>Login</button>
+      <div fxLayout="column" fxLayoutAlign="space-between stretch" fxLayoutGap="5%">
+        <button mat-raised-button color="primary" [disabled]='loginForm.invalid' (click)="authenticateLogin()" fxFlex>Login</button>
         <div fxLayout="row" fxLayoutAlign="space-between center">
           <div>
             <span>
               Become a member?
-              <a routerLink=".">Signup</a>
+              <a routerLink="/signUp" skipLocationChange>Signup</a>
             </span>
           </div>
-          <div>Forgot Password</div>
+          <div><a routerLink="/forgotPassword" skipLocationChange>Forgot Password</a></div>
         </div>
       </div>
     </div>

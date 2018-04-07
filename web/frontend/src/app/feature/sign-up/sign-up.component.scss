@@ -1,5 +1,14 @@
+a:-webkit-any-link {
+    color: white;
+    cursor: auto;
+    text-decoration: none;
+  }
   
-
-.content {
-    margin: 20px;
-}
+  /deep/ .mat-input-placeholder .focused {
+    color : white;
+  }
+  
+  .mat-form-field {
+    text-align: center;
+    font-size: medium
+  }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-
+import { Router } from '@angular/router'
+ 
 @Component({
   selector: 'app-change-password',
   templateUrl: './change-password.component.html',
@@ -8,8 +9,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class ChangePasswordComponent implements OnInit {
 
-  changePassword
-  : FormGroup;
+  changePassword: FormGroup;
   authenticate: Authenticate = {};
   cols: { [key: string]: string } = {
     firstCol: 'row',
@@ -21,7 +21,8 @@ export class ChangePasswordComponent implements OnInit {
     {code: '+06', country: 'Australia'},
   ];
   hide = true;
-  constructor(private fb: FormBuilder) {}
+  constructor( private fb: FormBuilder,
+               private router: Router) {}
 
   ngOnInit() {
     this.changePassword = this.fb.group({
@@ -37,6 +38,10 @@ export class ChangePasswordComponent implements OnInit {
       console.log('newPassword', this.changePassword.get('newPassword').value);
       console.log('confirmPassword', this.changePassword.get('confirmPassword').value);
     });
+  }
+
+  updatePassword() {
+    this.router.navigateByUrl('dashboard', {skipLocationChange: true});
   }
 
 }

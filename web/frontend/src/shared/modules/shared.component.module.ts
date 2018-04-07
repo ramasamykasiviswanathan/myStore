@@ -8,6 +8,7 @@ import { MenuComponent } from '../../app/feature/menu/menu.component';
 import { MaterialModule } from './material.module';
 import { CovalentModule } from './covalent.module';
 import { ForgotPasswordComponent } from '../../app/feature/forgot-password/forgot-password.component';
+import { ForgotPasswordOtpComponent } from '../../app/feature/forgot-password-otp/forgot-password-otp.component';
 import { OtpComponent } from '../../app/feature/otp/otp.component';
 import { ChangePasswordComponent } from '../../app/feature/change-password/change-password.component';
 import { SignUpComponent } from '../../app/feature/sign-up/sign-up.component';
@@ -38,6 +39,7 @@ import { routing } from '../../app/app.router';
     DashboardComponent,
     MenuComponent,
     ForgotPasswordComponent,
+    ForgotPasswordOtpComponent,
     OtpComponent,
     ChangePasswordComponent,
     SignUpComponent,
@@ -63,6 +65,7 @@ import { routing } from '../../app/app.router';
     DashboardComponent,
     MenuComponent,
     ForgotPasswordComponent,
+    ForgotPasswordOtpComponent,
     OtpComponent,
     ChangePasswordComponent,
     SignUpComponent,
