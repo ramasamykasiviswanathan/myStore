@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +19,9 @@ export class LoginComponent implements OnInit {
     {code: '+06', country: 'Australia'},
   ];
   hide = true;
-  constructor(private fb: FormBuilder) {}
+  constructor( private fb: FormBuilder,
+               private router: Router,
+               private route: ActivatedRoute) {}
 
   ngOnInit() {
     this.loginForm = this.fb.group({
@@ -38,6 +41,10 @@ export class LoginComponent implements OnInit {
       console.log('data', data);
       console.log('this.loginForm.value', this.loginForm.value);
     });
+  }
+
+  authenticateLogin() {
+     this.router.navigateByUrl('dashboard', {skipLocationChange: true});
   }
 }
 

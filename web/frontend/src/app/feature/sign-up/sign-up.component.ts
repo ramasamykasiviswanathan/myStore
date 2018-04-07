@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-up',
@@ -19,7 +20,8 @@ export class SignUpComponent implements OnInit {
     {code: '+06', country: 'Australia'},
   ];
   hide = true;
-  constructor(private fb: FormBuilder) {}
+  constructor( private fb: FormBuilder,
+               private router: Router) {}
 
   ngOnInit() {
     this.signUpForm = this.fb.group({
@@ -39,6 +41,10 @@ export class SignUpComponent implements OnInit {
       console.log('data', data);
       console.log('this.loginForm.value', this.signUpForm.value);
     });
+  }
+
+  signUp() {
+    this.router.navigateByUrl('requestOTP', {skipLocationChange: true})
   }
 }
 

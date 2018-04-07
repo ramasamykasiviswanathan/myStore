@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-forgot-password',
@@ -25,7 +26,8 @@ export class ForgotPasswordComponent implements OnInit {
     {code: '+06', country: 'Australia'},
   ];
   hide = true;
-  constructor(private fb: FormBuilder) {}
+  constructor( private fb: FormBuilder,
+               private router: Router) {}
 
   ngOnInit() {
     this.forgotPassword = this.fb.group({
@@ -43,6 +45,10 @@ export class ForgotPasswordComponent implements OnInit {
       console.log('data', data);
       console.log('this.forgotPassword.value', this.forgotPassword.value);
     });
+  }
+
+  requestOTP() {
+    this.router.navigateByUrl('forgotPasswordOtp', {skipLocationChange: true});
   }
 
 }
