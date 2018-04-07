@@ -36,6 +36,9 @@ public class UserIdentity implements Serializable
     
     @JsonProperty("RetailerCode")
     private String retailerCode;
+    
+    @JsonProperty("Name")
+    private String name;
 
     /**
      * @return the mobileNumber
@@ -138,10 +141,26 @@ public class UserIdentity implements Serializable
         this.retailerCode = retailerCode;
     }
 
+    /**
+     * @return the name
+     */
+    public String getName()
+    {
+        return name;
+    }
+
+    /**
+     * @param name the name to set
+     */
+    public void setName(String name)
+    {
+        this.name = name;
+    }
+
     @Override
     public int hashCode()
     {
-        return Objects.hash(this.emailAddress, this.mobileNumber, this.password, this.newPassword, this.otp, this.retailerCode);
+        return Objects.hash(this.emailAddress, this.mobileNumber, this.password, this.newPassword, this.otp, this.retailerCode, this.name);
     }
 
     @Override
@@ -156,7 +175,8 @@ public class UserIdentity implements Serializable
                     && Objects.equals(value.getMobileNumber(), this.getMobileNumber())
                     && Objects.equals(value.getNewPassword(), this.getNewPassword())
                     && Objects.equals(value.getRetailerCode(), this.getRetailerCode())
-                    && Objects.equals(value.getOtp(), this.getOtp());
+                    && Objects.equals(value.getOtp(), this.getOtp())
+                    && Objects.equals(value.getName(), this.getName());
         }
 
         return result;

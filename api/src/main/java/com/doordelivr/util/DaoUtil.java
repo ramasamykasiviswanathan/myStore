@@ -53,10 +53,10 @@ final public class DaoUtil
         return xmlobjectMapper.writeValueAsString(inputParam);
     }
     
-    public String populateShowShopsEnitity(final UserIdentity identity, final String appId, final String userID)
+    public String populateShowShopsEnitity(final String appId, final String userID)
             throws JsonProcessingException
     {
-        InputParam inputParam = populateInputParam(identity, appId, userID);
+        InputParam inputParam = populateInputParam(appId, userID);
         inputParam.setSpType("Show_Shops");
         return xmlobjectMapper.writeValueAsString(inputParam);
     }
@@ -72,6 +72,11 @@ final public class DaoUtil
     public InputParam populateInputParam(final UserIdentity identity, final String appId, final String userID)
     {
         return this.initialiseInputParam(identity, appId, userID);
+    }
+    
+    public InputParam populateInputParam(final String appId, final String userID)
+    {
+        return this.initialiseInputParam(null, appId, userID);
     }
 
     public InputParam populateInputParam(final UserIdentity identity, final String appId)
