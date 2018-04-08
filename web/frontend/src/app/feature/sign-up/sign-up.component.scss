@@ -1,14 +1,21 @@
+@import '~@angular/material/theming';
+
+form {
+  background-color: mat-color(mat-palette($mat-blue-grey, 500));
+  padding: 3%;
+}
+
 a:-webkit-any-link {
-    color: white;
-    cursor: auto;
-    text-decoration: none;
-  }
-  
-  /deep/ .mat-input-placeholder .focused {
-    color : white;
-  }
-  
-  .mat-form-field {
-    text-align: center;
-    font-size: medium
-  }
+  color: white;
+  cursor: auto;
+  text-decoration: none;
+}
+
+/deep/ .mat-input-placeholder .focused {
+  color: white;
+}
+
+.mat-form-field {
+  text-align: center;
+  font-size: medium;
+}
