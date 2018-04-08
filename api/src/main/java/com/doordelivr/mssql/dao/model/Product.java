@@ -96,7 +96,7 @@ public class Product implements Serializable {
 	@Override
 	public boolean equals(Object obj) {
 		boolean result = false;
-		if (this.hashCode() == obj.hashCode() && obj instanceof Product) {
+		if (null != obj && this.hashCode() == obj.hashCode() && obj instanceof Product) {
 			Product products = (Product) obj;
 			if (Objects.equals(this.getStock(), products.getStock()) && Objects.equals(this.getMrp(), products.getMrp())
 					&& Objects.equals(this.getProductCode(), products.getProductCode())

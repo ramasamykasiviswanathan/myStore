@@ -3,21 +3,20 @@ package com.doordelivr.util;
 import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.converter.xml.MappingJackson2XmlHttpMessageConverter;
 import org.springframework.stereotype.Component;
 
 import com.doordelivr.dto.model.UserIdentity;
 import com.doordelivr.mssql.dao.xml.model.login.InputParam;
 import com.doordelivr.mssql.dao.xml.model.login.Parameters;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Component
-final public class DaoUtil
+public class DaoUtil
 {
-
     @Autowired
-    private ObjectMapper xmlobjectMapper;
-
+    private MappingJackson2XmlHttpMessageConverter xmlConverter;
+    
     private DaoUtil()
     {
     }
@@ -26,7 +25,7 @@ final public class DaoUtil
     {
         InputParam inputParam = populateInputParam(identity, appId);
         inputParam.setSpType("Validate_User");
-        return xmlobjectMapper.writeValueAsString(inputParam);
+        return xmlConverter.getObjectMapper().writeValueAsString(inputParam);
     }
 
     public String populateForgotPasswordEnitity(final UserIdentity identity, final String appId)
@@ -34,7 +33,7 @@ final public class DaoUtil
     {
         InputParam inputParam = populateInputParam(identity, appId);
         inputParam.setSpType("Forgot_Password");
-        return xmlobjectMapper.writeValueAsString(inputParam);
+        return xmlConverter.getObjectMapper().writeValueAsString(inputParam);
     }
 
     public String populateChangePasswordEnitity(final UserIdentity identity, final String appId, final String userID)
@@ -42,7 +41,7 @@ final public class DaoUtil
     {
         InputParam inputParam = populateInputParam(identity, appId, userID);
         inputParam.setSpType("Change_Password");
-        return xmlobjectMapper.writeValueAsString(inputParam);
+        return xmlConverter.getObjectMapper().writeValueAsString(inputParam);
     }
     
     public String populateSignupUserEnitity(final UserIdentity identity, final String appId)
@@ -50,7 +49,7 @@ final public class DaoUtil
     {
         InputParam inputParam = populateInputParam(identity, appId);
         inputParam.setSpType("Signup_User");
-        return xmlobjectMapper.writeValueAsString(inputParam);
+        return xmlConverter.getObjectMapper().writeValueAsString(inputParam);
     }
     
     public String populateShowShopsEnitity(final String appId, final String userID)
@@ -58,7 +57,7 @@ final public class DaoUtil
     {
         InputParam inputParam = populateInputParam(appId, userID);
         inputParam.setSpType("Show_Shops");
-        return xmlobjectMapper.writeValueAsString(inputParam);
+        return xmlConverter.getObjectMapper().writeValueAsString(inputParam);
     }
     
     public String populateAddRetailerEnitity(final UserIdentity identity, final String appId, final String userID)
@@ -66,7 +65,7 @@ final public class DaoUtil
     {
         InputParam inputParam = populateInputParam(identity, appId, userID);
         inputParam.setSpType("Add_Retailer");
-        return xmlobjectMapper.writeValueAsString(inputParam);
+        return xmlConverter.getObjectMapper().writeValueAsString(inputParam);
     }
 
     public InputParam populateInputParam(final UserIdentity identity, final String appId, final String userID)
