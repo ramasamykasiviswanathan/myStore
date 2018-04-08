@@ -1,3 +1,10 @@
+@import '~@angular/material/theming';
+
+form {
+  background-color: mat-color(mat-palette($mat-blue-grey, 500));
+  padding: 3%;
+}
+
 a:-webkit-any-link {
   color: white;
   cursor: auto;
@@ -5,10 +12,10 @@ a:-webkit-any-link {
 }
 
 /deep/ .mat-input-placeholder .focused {
-  color : white;
+  color: white;
 }
 
 .mat-form-field {
   text-align: center;
-  font-size: medium
+  font-size: medium;
 }
