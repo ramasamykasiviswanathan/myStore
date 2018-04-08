@@ -16,7 +16,6 @@ public class UserIdentity implements Serializable
 
     public UserIdentity()
     {
-        // TODO Auto-generated constructor stub
     }
     
     @JsonProperty("MobileNumber")

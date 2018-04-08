@@ -14,7 +14,7 @@ import com.doordelivr.dto.model.LoginResponseModel;
 import com.doordelivr.dto.model.ShopInformationModel;
 
 @Component
-public class DtoUtil
+final public class DtoUtil
 {
 
     private DtoUtil()
