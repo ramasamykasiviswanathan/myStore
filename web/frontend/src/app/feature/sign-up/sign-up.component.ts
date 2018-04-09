@@ -8,43 +8,35 @@ import { Router } from '@angular/router';
   styleUrls: ['./sign-up.component.scss']
 })
 export class SignUpComponent implements OnInit {
-
   signUpForm: FormGroup;
   authenticate: Authenticate = {};
   cols: { [key: string]: string } = {
-    firstCol: 'row',
+    firstCol: 'row'
   };
   countryCodes = [
-    {code: '+91', country: 'India'},
-    {code: '+01', country: 'United States'},
-    {code: '+06', country: 'Australia'},
+    { code: '+91', country: 'India' },
+    { code: '+01', country: 'United States' },
+    { code: '+06', country: 'Australia' }
   ];
-  hide = true;
-  constructor( private fb: FormBuilder,
-               private router: Router) {}
+  constructor(private fb: FormBuilder, private router: Router) {}
 
   ngOnInit() {
     this.signUpForm = this.fb.group({
       userName: ['', [Validators.required]],
       password: ['', [Validators.required]],
       mobileNumber: ['', [Validators.required]],
-      email: ['', [Validators.required]],
+      email: ['', [Validators.required]]
     });
     this.signUpForm.valueChanges.subscribe(data => {
       if (!this.signUpForm) {
         return;
       }
-      console.log('userName', this.signUpForm.get('userName').value);
-      console.log('mobileNumber', this.signUpForm.get('mobileNumber').value);
-      console.log('email', this.signUpForm.get('email').value);
-      console.log('password', this.signUpForm.get('password').value);
-      console.log('data', data);
-      console.log('this.loginForm.value', this.signUpForm.value);
+      console.log('signUpForm', this.signUpForm.value);
     });
   }
 
   signUp() {
-    this.router.navigateByUrl('requestOTP', {skipLocationChange: true})
+    this.router.navigateByUrl('requestOTP', { skipLocationChange: true });
   }
 }
 
