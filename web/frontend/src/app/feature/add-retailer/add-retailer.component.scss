@@ -1,0 +1,10 @@
+@import '~@angular/material/theming';
+
+form {
+  background-color: mat-color(mat-palette($mat-blue-grey, 500));
+  padding: 3%;
+}
+.mat-form-field {
+  text-align: center;
+  font-size: medium;
+}

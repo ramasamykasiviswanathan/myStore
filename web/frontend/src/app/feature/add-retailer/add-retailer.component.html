@@ -1,0 +1,12 @@
+<form [formGroup]="addNewShopForm" novalidate (ngSubmit)="addRetailer(addNewShopForm.value)">
+  <div fxLayout="column" fxLayoutAlign="stretch" fxLayoutGap="4%">
+    <h1 fxFlex fxFlexAlign="Center">
+      <app-icon [iconType]="'AppLogo'" [height]="'6em'" [width]="'6em'"></app-icon>
+    </h1>
+    <h1 fxFlex fxFlexAlign="Center">Add New Shop</h1>
+    <mat-form-field disableRipple fxFlex>
+      <input matInput maxlength="10" placeholder="Enter 10 digit Retailer Code" formControlName="retailerCode">
+    </mat-form-field>
+    <button type="submit" mat-raised-button color="primary" [disabled]='addNewShopForm.invalid' fxFlex>Add Pharmacy/Store</button>
+  </div>
+</form>
