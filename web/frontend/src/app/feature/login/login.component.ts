@@ -11,24 +11,25 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   authenticate: Authenticate = {};
   cols: { [key: string]: string } = {
-    firstCol: 'row',
+    firstCol: 'row'
   };
   countryCodes = [
-    {code: '+91', country: 'India'},
-    {code: '+01', country: 'United States'},
-    {code: '+06', country: 'Australia'},
+    { code: '+91', country: 'India' },
+    { code: '+01', country: 'United States' },
+    { code: '+06', country: 'Australia' }
   ];
-  hide = true;
-  constructor( private fb: FormBuilder,
-               private router: Router,
-               private route: ActivatedRoute) {}
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit() {
     this.loginForm = this.fb.group({
       userName: ['', [Validators.required]],
       password: ['', [Validators.required]],
       mobileNumber: ['', [Validators.required]],
-      email: ['', [Validators.required]],
+      email: ['', [Validators.required]]
     });
     this.loginForm.valueChanges.subscribe(data => {
       if (!this.loginForm) {
@@ -44,7 +45,7 @@ export class LoginComponent implements OnInit {
   }
 
   authenticateLogin() {
-     this.router.navigateByUrl('dashboard', {skipLocationChange: true});
+    this.router.navigateByUrl('dashboard', { skipLocationChange: true });
   }
 }
 

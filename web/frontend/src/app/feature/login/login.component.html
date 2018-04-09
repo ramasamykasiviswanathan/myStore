@@ -80,8 +80,8 @@
       <input matInput placeholder="Email" formControlName="email" email>
     </mat-form-field>
     <mat-form-field fxFlex>
-      <input matInput placeholder="Password" [type]="hide ? 'password' : 'text'" formControlName="password">
-      <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+      <input matInput placeholder="Password" [type]="passwordRef.value ? 'text' : 'password'" formControlName="password">
+      <mat-icon matSuffix #passwordRef (click)="passwordRef.value = !passwordRef.value">{{passwordRef.value ? 'visibility' : 'visibility_off'}}</mat-icon>
     </mat-form-field>
     <button mat-raised-button color="primary" [disabled]='loginForm.invalid' (click)="authenticateLogin()" fxFlex>Login</button>
     <div fxFlex fxLayout="row" fxLayoutAlign="space-between start" fxLayoutGap="2%">
