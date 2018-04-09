@@ -16,6 +16,7 @@ public class UserIdentity implements Serializable
 
     public UserIdentity()
     {
+      // Empty Constructor
     }
     
     @JsonProperty("MobileNumber")
