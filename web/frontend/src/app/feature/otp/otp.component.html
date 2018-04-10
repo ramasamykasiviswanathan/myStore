@@ -28,30 +28,30 @@
         </div>
     </form>
 </div> -->
-<form [formGroup]="otp" novalidate>
+<form [formGroup]="otp" novalidate (ngSubmit)="submitOTP(otp.value)">
     <div fxLayout="column" fxLayoutAlign="center stretch" fxLayoutGap="2%">
         <h3 fxFlex fxFlexAlign="center" class="md-subhead">
             Enter OTP
         </h3>
-        <h3 class="md-subhead" fxFlex fxFlexAlign="center">+91 9864735287</h3>
+        <h3 class="md-subhead" fxFlex fxFlexAlign="center">{{userIdentity.MobileNumber || userIdentity.EmailAddress}}</h3>
         <h3 class="md-subhead" fxFlex fxFlexAlign="center">Please enter 4 - Digit conﬁrmation code you recieved</h3>
         <div fxFlex fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="20px" id="otpID">
             <mat-form-field fxFlex="calc(25%-20px)">
-                <input oninput="this.value=this.value.slice(0,this.maxLength)" matInput type="number" maxlength="1" formControlName="firstDigit">
+                <input matInput type="text" maxlength="1" formControlName="firstDigit">
             </mat-form-field>
             <mat-form-field fxFlex="calc(25%-20px)">
-                <input oninput="this.value=this.value.slice(0,this.maxLength)" matInput type="number" maxlength="1" formControlName="secondDigit">
+                <input matInput type="text" maxlength="1" formControlName="secondDigit">
             </mat-form-field>
             <mat-form-field fxFlex="calc(25%-20px)">
-                <input oninput="this.value=this.value.slice(0,this.maxLength)" matInput type="number" maxlength="1" formControlName="thirdDigit">
+                <input matInput type="text" maxlength="1" formControlName="thirdDigit">
             </mat-form-field>
             <mat-form-field fxFlex="calc(25%-20px)">
-                <input oninput="this.value=this.value.slice(0,this.maxLength)" matInput type="number" maxlength="1" formControlName="fourthDigit">
+                <input matInput type="text" maxlength="1" formControlName="fourthDigit">
             </mat-form-field>
         </div>
-        <button fxFlex mat-raised-button color="primary" [disabled]='otp.invalid' (click)="submitOTP()">Login</button>
+        <button fxFlex type="submit" mat-raised-button color="primary" [disabled]='otp.invalid'>Login</button>
         <div fxFlex fxFlexAlign="Center">
-            <a routerLink="/signUp" skipLocationChange>Resend OTP</a>
+            <a routerLink="." skipLocationChange>Resend OTP</a>
         </div>
     </div>
 </form>

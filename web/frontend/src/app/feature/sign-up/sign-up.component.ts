@@ -8,9 +8,11 @@ import {
   ValidationErrors
 } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs/Observable';
 import {
   IUserIdentity,
-  ICountryModel
+  ICountryModel,
+  IFlagMessageResponse
 } from '../../shared/model/ExternalService.interface';
 import { RemoteHttpService } from '../../shared/services/remote.service';
 
@@ -22,9 +24,6 @@ import { RemoteHttpService } from '../../shared/services/remote.service';
 export class SignUpComponent implements OnInit {
   signUpForm: FormGroup;
   userIdentity: IUserIdentity;
-  cols: { [key: string]: string } = {
-    firstCol: 'row'
-  };
   countryCodes: Array<ICountryModel>;
   constructor(
     private _fb: FormBuilder,
@@ -41,18 +40,15 @@ export class SignUpComponent implements OnInit {
       email: ['', [this.validateEmail]],
       country: ['']
     });
-    this.signUpForm.valueChanges.subscribe(data => {
-      if (!this.signUpForm) {
-        return;
-      }
-    });
     this._remoteHttpService
       .getCountryService()
       .subscribe(data => (this.countryCodes = data));
   }
 
   signUp(form: any) {
-    this.userIdentity.EmailAddress = form.email;
+    if (form.email) {
+      this.userIdentity.EmailAddress = form.email;
+    }
     if (form.mobileNumber) {
       const country: ICountryModel = form.country;
       this.userIdentity.MobileNumber =
@@ -60,9 +56,18 @@ export class SignUpComponent implements OnInit {
     }
     this.userIdentity.Password = form.password;
     this.userIdentity.Name = form.userName;
-    console.log('this.userIdentity', this.userIdentity);
-    // this._remoteHttpService.postSignupUserService()
-    this._router.navigateByUrl('requestOTP', { skipLocationChange: true });
+    let response: IFlagMessageResponse;
+    this._remoteHttpService
+      .postSignupUserService(this.userIdentity)
+      .subscribe(data => {
+        console.log('Signup.response', response);
+        response = data;
+        if (response.Message) {
+          this._router.navigate(['/requestOTP', this.userIdentity], {
+            skipLocationChange: true
+          });
+        }
+      });
   }
 
   private validateMobileNumber(control: FormControl): ValidationErrors {
@@ -74,14 +79,20 @@ export class SignUpComponent implements OnInit {
       if (control.value) {
         emailControl.setErrors(null);
         if (!countryControl.value) {
-          countryControl.setErrors({
-            message: 'Required field'
-          });
+          countryControl.setErrors(
+            {
+              message: 'Required field'
+            },
+            { emitEvent: true }
+          );
         }
       } else if (!emailControl.value) {
         response = {
           message: 'Required field'
         };
+      }
+      if (!control.value) {
+        countryControl.setErrors(null);
       }
     }
     return response;
@@ -92,9 +103,11 @@ export class SignUpComponent implements OnInit {
     const parent: FormGroup | FormArray = control.parent;
     if (parent) {
       const mobileNumberControl: FormControl = parent.controls['mobileNumber'];
+      const countryControl: FormControl = parent.controls['country'];
       if (control.value) {
         response = Validators.email(control);
         mobileNumberControl.setErrors(null);
+        countryControl.setErrors(null);
       } else if (!mobileNumberControl.value) {
         response = {
           message: 'Required field'

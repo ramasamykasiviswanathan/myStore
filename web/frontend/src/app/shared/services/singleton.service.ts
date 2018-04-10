@@ -1,5 +1,6 @@
 import { Injectable, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
+import { IUserIdentity } from '../model/ExternalService.interface';
 
 @Injectable()
 export class SingletonService implements OnInit {
