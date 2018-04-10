@@ -7,16 +7,22 @@ import {
   IUserIdentity,
   IFlagMessageResponse,
   ILoginResponse,
-  IShowShopsResponse
+  IShowShopsResponse,
+  ICountryModel
 } from '../model/ExternalService.interface';
+
+import { SingletonService } from './singleton.service';
 
 @Injectable()
 export class RemoteHttpService {
-  constructor(private _http: HttpClient) {}
+  constructor(
+    private _http: HttpClient,
+    private _singletonService: SingletonService
+  ) {}
 
-  populateHttpHeader = (
+  private populateHttpHeader = (
     httpHeaders = new HttpHeaders(),
-    userId?: String | Number
+    userId: String | Number = this._singletonService.userID
   ): HttpHeaders => {
     return httpHeaders
       .set('Content-Type', 'application/json; charset=utf8')
@@ -98,11 +104,22 @@ export class RemoteHttpService {
   }
 
   public getShowShopsService(
-    userId: String | Number,
+    userId?: String | Number,
     httpHeaders?: HttpHeaders
   ): Observable<IShowShopsResponse> {
     return this._http.post<IShowShopsResponse>(
       environment.URL + environment.path.SHOWSHOPS,
+      {
+        headers: this.populateHttpHeader(httpHeaders, userId)
+      }
+    );
+  }
+  public getCountryService(
+    userId?: String | Number,
+    httpHeaders?: HttpHeaders
+  ): Observable<ICountryModel> {
+    return this._http.post<ICountryModel>(
+      environment.URL + environment.path.COUNTRY,
       {
         headers: this.populateHttpHeader(httpHeaders, userId)
       }

@@ -38,3 +38,13 @@ export interface IShopInformationModel {
   StoreID: String;
   TAndC: String;
 }
+
+export interface ICountryModel {
+  id: Number;
+  iso: String;
+  name: String;
+  niceName: String;
+  iso3: String;
+  numCode: Number;
+  phoneCode: Number;
+}

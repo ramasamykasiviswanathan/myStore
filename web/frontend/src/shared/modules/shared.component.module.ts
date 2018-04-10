@@ -24,6 +24,8 @@ import { PlaceOrderComponent } from '../../app/feature/place-order/place-order.c
 import { IconComponent } from '../../app/shared/icon/icon.component';
 import { routing } from '../../app/app.router';
 import { RemoteHttpService } from '../../app/shared/services/remote.service';
+import { SingletonService } from '../../app/shared/services/singleton.service';
+import { AddRetailerComponent } from '../../app/feature/add-retailer/add-retailer.component';
 
 @NgModule({
   imports: [
@@ -53,7 +55,8 @@ import { RemoteHttpService } from '../../app/shared/services/remote.service';
     CategoryProductComponent,
     QuantityEditorComponent,
     PlaceOrderComponent,
-    IconComponent
+    IconComponent,
+    AddRetailerComponent
   ],
   exports: [
     RouterModule,
@@ -79,8 +82,9 @@ import { RemoteHttpService } from '../../app/shared/services/remote.service';
     CategoryProductComponent,
     QuantityEditorComponent,
     PlaceOrderComponent,
-    IconComponent
+    IconComponent,
+    AddRetailerComponent
   ],
-  providers: [RemoteHttpService]
+  providers: [RemoteHttpService, SingletonService]
 })
 export class SharedComponentModule {}
