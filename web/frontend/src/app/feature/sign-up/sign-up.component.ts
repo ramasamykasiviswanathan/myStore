@@ -8,7 +8,11 @@ import {
   ValidationErrors
 } from '@angular/forms';
 import { Router } from '@angular/router';
-import { IUserIdentity } from '../../shared/model/ExternalService.interface';
+import {
+  IUserIdentity,
+  ICountryModel
+} from '../../shared/model/ExternalService.interface';
+import { RemoteHttpService } from '../../shared/services/remote.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -17,37 +21,48 @@ import { IUserIdentity } from '../../shared/model/ExternalService.interface';
 })
 export class SignUpComponent implements OnInit {
   signUpForm: FormGroup;
-  authenticate: IUserIdentity;
+  userIdentity: IUserIdentity;
   cols: { [key: string]: string } = {
     firstCol: 'row'
   };
-  countryCodes = [
-    { code: '+91', country: 'India' },
-    { code: '+01', country: 'United States' },
-    { code: '+06', country: 'Australia' }
-  ];
-  constructor(private fb: FormBuilder, private router: Router) {}
+  countryCodes: Array<ICountryModel>;
+  constructor(
+    private _fb: FormBuilder,
+    private _router: Router,
+    private _remoteHttpService: RemoteHttpService
+  ) {}
 
   ngOnInit() {
-    this.authenticate = {} as IUserIdentity;
-    this.signUpForm = this.fb.group({
+    this.userIdentity = {} as IUserIdentity;
+    this.signUpForm = this._fb.group({
       userName: ['', [Validators.required]],
       password: ['', [Validators.required]],
       mobileNumber: ['', [this.validateMobileNumber]],
-      email: ['', [Validators.email, this.validateEmail]],
+      email: ['', [this.validateEmail]],
       country: ['']
     });
     this.signUpForm.valueChanges.subscribe(data => {
       if (!this.signUpForm) {
         return;
       }
-      console.log('signUpForm', this.signUpForm.value);
     });
+    this._remoteHttpService
+      .getCountryService()
+      .subscribe(data => (this.countryCodes = data));
   }
 
   signUp(form: any) {
-    console.log('form', form);
-    this.router.navigateByUrl('requestOTP', { skipLocationChange: true });
+    this.userIdentity.EmailAddress = form.email;
+    if (form.mobileNumber) {
+      const country: ICountryModel = form.country;
+      this.userIdentity.MobileNumber =
+        String(country.phoneCode) + String(form.mobileNumber);
+    }
+    this.userIdentity.Password = form.password;
+    this.userIdentity.Name = form.userName;
+    console.log('this.userIdentity', this.userIdentity);
+    // this._remoteHttpService.postSignupUserService()
+    this._router.navigateByUrl('requestOTP', { skipLocationChange: true });
   }
 
   private validateMobileNumber(control: FormControl): ValidationErrors {
@@ -78,6 +93,7 @@ export class SignUpComponent implements OnInit {
     if (parent) {
       const mobileNumberControl: FormControl = parent.controls['mobileNumber'];
       if (control.value) {
+        response = Validators.email(control);
         mobileNumberControl.setErrors(null);
       } else if (!mobileNumberControl.value) {
         response = {

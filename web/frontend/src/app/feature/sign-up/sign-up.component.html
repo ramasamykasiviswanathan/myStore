@@ -53,7 +53,7 @@
       <mat-form-field fxFlex="calc(10%-20px)" fxFlexAlign="start">
         <mat-select formControlName="country">
           <mat-option *ngFor="let countryCode of countryCodes" [value]="countryCode">
-            {{countryCode.code}}
+            {{countryCode.iso3}}
           </mat-option>
         </mat-select>
       </mat-form-field>

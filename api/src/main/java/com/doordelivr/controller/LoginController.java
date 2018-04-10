@@ -148,7 +148,7 @@ public class LoginController {
   }
   
   @GetMapping(path = "/Country")
-  public ResponseEntity<List<Country>> getCountry(@RequestHeader(value = "UserId") String userId, @RequestHeader(value = "AppId") String appId) {
+  public ResponseEntity<List<Country>> getCountry(@RequestHeader(value = "UserId", required = false) String userId, @RequestHeader(value = "AppId") String appId) {
     ResponseEntity<List<Country>> responseEntity = null;
     
     try {

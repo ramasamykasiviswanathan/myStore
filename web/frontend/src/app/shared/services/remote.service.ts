@@ -22,7 +22,7 @@ export class RemoteHttpService {
 
   private populateHttpHeader = (
     httpHeaders = new HttpHeaders(),
-    userId: String | Number = this._singletonService.userID
+    userId: String | Number = null
   ): HttpHeaders => {
     return httpHeaders
       .set('Content-Type', 'application/json; charset=utf8')
@@ -64,7 +64,7 @@ export class RemoteHttpService {
 
   public postChangePasswordService(
     userIdentity: IUserIdentity,
-    userId?: String | Number,
+    userId: String | Number = this._singletonService.userID,
     httpHeaders?: HttpHeaders
   ): Observable<IFlagMessageResponse> {
     return this._http.post<IFlagMessageResponse>(
@@ -78,7 +78,7 @@ export class RemoteHttpService {
 
   public postAddRetailerService(
     userIdentity: IUserIdentity,
-    userId?: String | Number,
+    userId: String | Number = this._singletonService.userID,
     httpHeaders?: HttpHeaders
   ): Observable<IFlagMessageResponse> {
     return this._http.post<IFlagMessageResponse>(
@@ -104,10 +104,10 @@ export class RemoteHttpService {
   }
 
   public getShowShopsService(
-    userId?: String | Number,
+    userId: String | Number = this._singletonService.userID,
     httpHeaders?: HttpHeaders
   ): Observable<IShowShopsResponse> {
-    return this._http.post<IShowShopsResponse>(
+    return this._http.get<IShowShopsResponse>(
       environment.URL + environment.path.SHOWSHOPS,
       {
         headers: this.populateHttpHeader(httpHeaders, userId)
@@ -117,8 +117,8 @@ export class RemoteHttpService {
   public getCountryService(
     userId?: String | Number,
     httpHeaders?: HttpHeaders
-  ): Observable<ICountryModel> {
-    return this._http.post<ICountryModel>(
+  ): Observable<Array<ICountryModel>> {
+    return this._http.get<Array<ICountryModel>>(
       environment.URL + environment.path.COUNTRY,
       {
         headers: this.populateHttpHeader(httpHeaders, userId)
