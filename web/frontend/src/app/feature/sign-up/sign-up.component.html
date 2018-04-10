@@ -40,7 +40,7 @@
   </form>
 </div> -->
 
-<form [formGroup]="signUpForm" novalidate>
+<form [formGroup]="signUpForm" novalidate (ngSubmit)="signUp(signUpForm.value)">
   <div fxLayout="column" fxLayoutAlign="stretch" fxLayoutGap="4%">
     <h1 fxFlex fxFlexAlign="Center">
       <app-icon [iconType]="'AppLogo'" [height]="'6em'" [width]="'6em'"></app-icon>
@@ -51,16 +51,14 @@
     </mat-form-field>
     <div fxFlex fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="20px">
       <mat-form-field fxFlex="calc(10%-20px)" fxFlexAlign="start">
-        <mat-select required>
-          <mat-option>--</mat-option>
+        <mat-select formControlName="country">
           <mat-option *ngFor="let countryCode of countryCodes" [value]="countryCode">
-            {{countryCode.code}}
+            {{countryCode.iso3}}
           </mat-option>
         </mat-select>
       </mat-form-field>
       <mat-form-field style="text-align: left" fxFlex fxFlexAlign="end">
-        <input matInput oninput="this.value=this.value.slice(0,this.maxLength)" maxlength="10" type="number" placeholder="   Mobile Number"
-          formControlName="mobileNumber">
+        <input matInput type="number" placeholder="Mobile Number" formControlName="mobileNumber">
       </mat-form-field>
     </div>
     <mat-form-field fxFlex>
@@ -70,6 +68,6 @@
       <input matInput placeholder="Password" [type]="passwordRef.value ? 'text' : 'password'" formControlName="password">
       <mat-icon matSuffix #passwordRef (click)="passwordRef.value = !passwordRef.value">{{passwordRef.value ? 'visibility' : 'visibility_off'}}</mat-icon>
     </mat-form-field>
-    <button mat-raised-button color="primary" [disabled]='signUpForm.invalid' (click)="signUp()" fxFlex>Send OTP</button>
+    <button mat-raised-button type="submit" color="primary" [disabled]='signUpForm.invalid' fxFlex>Send OTP</button>
   </div>
 </form>

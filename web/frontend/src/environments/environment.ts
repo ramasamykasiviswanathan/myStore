@@ -13,6 +13,7 @@ export const environment = {
     CHANGEPASSWORD: '/ChangePassword',
     SHOWSHOPS: '/ShowShops',
     ADDRETAILER: '/AddRetailer',
-    SIGNUPUSER: '/SignupUser'
+    SIGNUPUSER: '/SignupUser',
+    COUNTRY: '/Country'
   }
 };
