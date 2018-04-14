@@ -26,6 +26,8 @@ import { routing } from '../../app/app.router';
 import { RemoteHttpService } from '../../app/shared/services/remote.service';
 import { SingletonService } from '../../app/shared/services/singleton.service';
 import { AddRetailerComponent } from '../../app/feature/add-retailer/add-retailer.component';
+import { UserProfileComponent } from '../../app/feature/user-profile/user-profile.component';
+import { FeedbackComponent } from '../../app/feature/feedback/feedback.component';
 
 @NgModule({
   imports: [
@@ -56,7 +58,9 @@ import { AddRetailerComponent } from '../../app/feature/add-retailer/add-retaile
     QuantityEditorComponent,
     PlaceOrderComponent,
     IconComponent,
-    AddRetailerComponent
+    AddRetailerComponent,
+    UserProfileComponent,
+    FeedbackComponent
   ],
   exports: [
     RouterModule,
@@ -83,7 +87,9 @@ import { AddRetailerComponent } from '../../app/feature/add-retailer/add-retaile
     QuantityEditorComponent,
     PlaceOrderComponent,
     IconComponent,
-    AddRetailerComponent
+    AddRetailerComponent,
+    UserProfileComponent,
+    FeedbackComponent
   ],
   providers: [RemoteHttpService, SingletonService]
 })

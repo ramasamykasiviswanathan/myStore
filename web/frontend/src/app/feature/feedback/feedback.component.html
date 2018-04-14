@@ -1,0 +1,17 @@
+<app-menu class='mat-app-background toolbar' name="My Profile"></app-menu>
+<div CLASS="form-container"[formGroup]="feedbackForm" fxLayout="column" fxLayoutAlign="space-around stretch" fxLayoutGap="3%">
+  <mat-form-field>
+    <mat-select required formControlName="retailerName">
+      <mat-option selected>Choose Retailer</mat-option>
+      <mat-option>Muthu Pharma</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+      <input matInput placeholder="Subject">
+  </mat-form-field>
+  <mat-form-field>
+      <textarea rows="4"matInput placeholder="Details"></textarea>
+  </mat-form-field>
+  <button fxFlex mat-raised-button color="primary" [disabled]='feedbackForm.invalid' (click)="sendFeedBack()" fxFlex>Send</button>
+  <div fxLayoutAlign="center">Cancel</div>
+</div>
