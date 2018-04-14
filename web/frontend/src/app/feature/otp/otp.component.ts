@@ -1,6 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import 'rxjs/add/operator/switchMap';
+import { Observable } from 'rxjs/Observable';
+import {
+  IUserIdentity,
+  IFlagMessageResponse
+} from '../../shared/model/ExternalService.interface';
+import { RemoteHttpService } from '../../shared/services/remote.service';
 
 @Component({
   selector: 'app-otp',
@@ -8,43 +15,55 @@ import { Router } from '@angular/router';
   styleUrls: ['./otp.component.scss']
 })
 export class OtpComponent implements OnInit {
-
   otp: FormGroup;
-  authenticate: Authenticate = {};
-  cols: { [key: string]: string } = {
-    firstCol: 'row',
-  };
-  hide = true;
-  constructor( private fb: FormBuilder,
-               private router: Router) {}
+  userIdentity: IUserIdentity;
+  constructor(
+    private _fb: FormBuilder,
+    private _router: Router,
+    private _activatedRoute: ActivatedRoute,
+    private _remoteHttpService: RemoteHttpService
+  ) {}
 
   ngOnInit() {
-    this.otp = this.fb.group({
+    this.userIdentity = {} as IUserIdentity;
+    this._activatedRoute.paramMap.subscribe((params: ParamMap) => {
+      this.userIdentity.Name = params.get('Name');
+      this.userIdentity.MobileNumber = params.get('MobileNumber');
+      this.userIdentity.EmailAddress = params.get('EmailAddress');
+      this.userIdentity.Password = params.get('Password');
+      /**
+       * EmailAddress:"abc@cde.com"
+       * MobileNumber:"213213213"
+       * Name:"sadasd"
+       * Password:"dsds"
+       */
+    });
+    this.otp = this._fb.group({
       firstDigit: ['', [Validators.required]],
       secondDigit: ['', [Validators.required]],
       thirdDigit: ['', [Validators.required]],
-      fourthDigit: ['', [Validators.required]],
-    });
-    this.otp.valueChanges.subscribe(data => {
-      if (!this.otp) {
-        return;
-      }
-      console.log('firstDigit', this.otp.get('firstDigit').value);
-      console.log('secondDigit', this.otp.get('secondDigit').value);
-      console.log('thirdDigit', this.otp.get('thirdDigit').value);
-      console.log('fourthDigit', this.otp.get('fourthDigit').value);
+      fourthDigit: ['', [Validators.required]]
     });
   }
 
-  submitOTP() {
-    this.router.navigateByUrl('dashboard', {skipLocationChange: true});
+  submitOTP(form: any) {
+    this.userIdentity.OTP = [
+      form.firstDigit,
+      form.secondDigit,
+      form.thirdDigit,
+      form.fourthDigit
+    ].join('');
+    let response: IFlagMessageResponse;
+    this._remoteHttpService
+      .postSignupUserService(this.userIdentity)
+      .subscribe(data => {
+        console.log('SubmitOTP.response', response);
+        response = data;
+      });
+    if (response.Message) {
+      this._router.navigateByUrl('loginComponent', {
+        skipLocationChange: true
+      });
+    }
   }
-
-}
-
-export interface Authenticate {
-    firstDigit?: Number;
-    secondDigit?: Number;
-    thirdDigit?: Number;
-    fourthDigit?: Number;
 }
